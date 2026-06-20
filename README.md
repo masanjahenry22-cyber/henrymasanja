@@ -1,9 +1,9 @@
 # Henry Mashen Masanja — Personal Website
 
 A fast, static personal portfolio (single `index.html` + `images/` + `documents/`).
-No build step — edit the HTML, push, and it's live.
+No build step — edit the HTML, `git push`, and GitHub Pages publishes it automatically.
 
-Live site: **https://henrymashenmasanja.com** (after deploying — see below)
+Live site: **https://henrymashenmasanja.com** (after DNS — see below)
 
 ---
 
@@ -11,92 +11,75 @@ Live site: **https://henrymashenmasanja.com** (after deploying — see below)
 
 ```
 Website/
-├── index.html          # the whole site (HTML + CSS + JS in one file)
-├── images/             # photos used on the site (clean names) + originals
-├── documents/          # CV, transcripts, certificates (PDFs)
-├── Caddyfile           # web-server config for the VM (auto HTTPS)
-├── deploy.sh           # run on the VM to publish the latest version
+├── index.html      # the whole site (HTML + CSS + JS in one file)
+├── images/         # photos used on the site (clean names)
+├── documents/      # CV, transcripts, certificates (PDFs)
+├── CNAME           # custom domain for GitHub Pages
+├── .nojekyll       # serve files as-is (no Jekyll processing)
 ├── .gitignore
 └── README.md
 ```
 
 ## Editing
 
-Open `index.html` in your editor. Everything lives in that one file:
-- **Text/sections** are plain HTML — edit in place.
-- **Add a gallery photo:** drop the file in `images/`, then copy a `.gallery-tile`
-  block in the `§ 06 Gallery` section and point `data-full` + `<img src>` at it.
-- **Add a document:** drop the PDF in `documents/`, then copy a `.doc-card`
-  block in `§ 07 Documents` and update the `href`.
-- **Colors/theme:** the `:root` and `[data-theme="dark"]` CSS variables at the top.
+Open `index.html` — everything lives in that one file:
+- **Text/sections**: plain HTML, edit in place.
+- **Add a gallery photo**: drop the file in `images/`, copy a `.gallery-tile`
+  block in `§ 06 Gallery`, point `data-full` + `<img src>` at it.
+- **Add a document**: drop the PDF in `documents/`, copy a `.doc-card`
+  block in `§ 07 Documents`, update the `href`.
+- **Colors/theme**: the `:root` / `[data-theme="dark"]` CSS variables at the top.
 
-Preview locally by double-clicking `index.html`, or run a local server:
+Preview locally:
 ```bash
-python -m http.server 5500    # then open http://localhost:5500
+python -m http.server 5500    # open http://localhost:5500
 ```
 
 ---
 
-## Going live at henrymashenmasanja.com
+## Hosting on GitHub Pages
 
-You need three things: **(1) a domain, (2) a server, (3) DNS pointing one at the other.**
-
-### 1. Register the domain
-Buy `henrymashenmasanja.com` from a registrar (Cloudflare or Porkbun recommended,
-~$10/yr). Note: only YOU can buy this — it needs your payment.
-
-### 2. Create the Oracle Cloud "Always Free" VM
-1. cloud.oracle.com → **Compute → Instances → Create Instance**
-2. Image **Ubuntu 22.04**, Shape **VM.Standard.A1.Flex** (Always Free eligible)
-3. Download the SSH private key. Note the **public IP**.
-
-### 3. Open the firewall (two layers — Oracle gotcha)
-**Cloud side:** VCN → Security List → add Ingress rules for `0.0.0.0/0` on TCP **80** and **443**.
-**VM side** (after SSH in):
+### 1. Push the repo (one time)
 ```bash
-sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
-sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
-sudo netfilter-persistent save
+gh repo create henrymashenmasanja --public --source=. --remote=origin --push
+# (or create the repo on github.com, then: git remote add origin ... && git push -u origin main)
 ```
 
-### 4. Install Caddy + clone the site (one-time)
-SSH in (`ssh -i your-key.key ubuntu@YOUR_IP`):
+### 2. Enable Pages from the main branch root
 ```bash
-sudo apt update && sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl git
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-sudo apt update && sudo apt install -y caddy
+gh api -X POST repos/Chanx-Charitana/henrymashenmasanja/pages \
+  -f "source[branch]=main" -f "source[path]=/"
+```
+Your site goes live at `https://chanx-charitana.github.io/henrymashenmasanja/`.
 
-# clone your repo into the web root
-sudo git clone https://github.com/Chanx-Charitana/henrymashenmasanja.git /var/www/henry
+### 3. Custom domain (henrymashenmasanja.com)
+The `CNAME` file in this repo already sets the domain. At your registrar, add DNS:
 
-# install the Caddy config
-sudo cp /var/www/henry/Caddyfile /etc/caddy/Caddyfile
-sudo systemctl reload caddy
+```
+# Apex (henrymashenmasanja.com) -> GitHub Pages IPs
+@   A   185.199.108.153
+@   A   185.199.109.153
+@   A   185.199.110.153
+@   A   185.199.111.153
+
+# www subdomain
+www CNAME chanx-charitana.github.io.
 ```
 
-### 5. Point the domain
-At your registrar add **A records**:
+### 4. Verify + enforce HTTPS
+```bash
+nslookup henrymashenmasanja.com          # should list the 185.199.x.x IPs
+curl -I https://henrymashenmasanja.com   # HTTP/2 200 once the cert is issued
 ```
-@    ->  YOUR_VM_IP
-www  ->  YOUR_VM_IP
-```
-Within minutes–hours, Caddy issues a free SSL cert and the site is live at
-**https://henrymashenmasanja.com** 🔒
+GitHub auto-issues a free SSL cert (can take a few minutes to an hour).
 
 ---
 
 ## Publishing updates (the everyday loop)
 
-On your PC after editing:
 ```bash
 git add -A
-git commit -m "describe your change"
+git commit -m "update site"
 git push
 ```
-Then on the VM (or via one SSH command):
-```bash
-ssh -i your-key.key ubuntu@YOUR_IP "cd /var/www/henry && ./deploy.sh"
-```
-
-That's it — edit, push, deploy.
+GitHub Pages rebuilds automatically within ~1 minute. That's the whole workflow.
