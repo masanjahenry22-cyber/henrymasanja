@@ -1,0 +1,22 @@
+# Caddy config for henrymashenmasanja.com
+# Place this at /etc/caddy/Caddyfile on your Oracle Cloud VM.
+# Caddy automatically obtains & renews a free HTTPS certificate.
+
+henrymashenmasanja.com, www.henrymashenmasanja.com {
+    root * /var/www/henry
+    file_server
+    encode gzip zstd
+
+    # Cache static assets for faster repeat visits
+    @static {
+        path *.jpeg *.jpg *.png *.webp *.gif *.svg *.pdf *.woff2 *.ico
+    }
+    header @static Cache-Control "public, max-age=2592000"
+
+    # Friendly 404 -> send visitors back to the homepage
+    handle_errors {
+        @notfound expression {http.error.status_code} == 404
+        rewrite @notfound /index.html
+        file_server
+    }
+}

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henry Mashen Masanja — Precision &amp; Digital Agriculture</title>
+  <meta name="description" content="Henry Mashen Masanja — Agricultural Sciences & Engineering. Precision agriculture, UAV remote sensing, geospatial analysis, and machine learning for sustainable food systems." />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    /* ════════ DESIGN TOKENS ════════ */
+    :root {
+      --bg:#fafaf8; --bg2:#f1f1ed; --surface:#ffffff; --border:#e4e2dc;
+      --text:#1a1917; --text2:#635f57; --text3:#9b9890;
+      --accent:#2d6a30; --accent2:#4a9e4f; --accent-bg:#edf5ee;
+      --radius:8px; --tr:0.2s ease;
+    }
+    [data-theme="dark"] {
+      --bg:#100f0e; --bg2:#1a1917; --surface:#1d1c1a; --border:#2d2b27;
+      --text:#f1eee9; --text2:#a39f97; --text3:#5c5a53;
+      --accent:#5cbf62; --accent2:#7dd382; --accent-bg:#18271a;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background var(--tr),color var(--tr);}
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+    ::-webkit-scrollbar{width:7px;}
+    ::-webkit-scrollbar-track{background:var(--bg);}
+    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+
+    /* reveal-on-scroll (progressive enhancement) */
+    .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+    .js .reveal.in{opacity:1;transform:none;}
+
+    /* ════════ NAV ════════ */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);height:54px;display:flex;align-items:center;transition:background var(--tr);}
+    .nav-inner{width:100%;max-width:1180px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;}
+    .nav-brand{font-size:0.85rem;font-weight:700;color:var(--text);}
+    .nav-brand span{color:var(--text2);font-weight:400;}
+    .nav-links{display:flex;list-style:none;gap:0.1rem;align-items:center;}
+    .nav-links a{font-size:0.76rem;color:var(--text2);padding:0.3rem 0.6rem;border-radius:5px;transition:color var(--tr),background var(--tr);}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--bg2);}
+    .theme-btn{width:32px;height:32px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;font-size:0.85rem;display:flex;align-items:center;justify-content:center;transition:all var(--tr);}
+    .theme-btn:hover{color:var(--text);background:var(--bg2);}
+
+    /* ════════ HERO ════════ */
+    .hero{padding:120px 2rem 70px;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:4rem;align-items:center;}
+    .hero-label{font-size:0.74rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1rem;}
+    .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-0.025em;margin-bottom:1.2rem;}
+    .hero-desc{font-size:1rem;color:var(--text2);max-width:540px;line-height:1.7;margin-bottom:2rem;}
+    .hero-desc strong{color:var(--text);}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:0.7rem;margin-bottom:2.5rem;}
+    .btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1.15rem;border-radius:6px;font-size:0.82rem;font-weight:600;transition:all var(--tr);cursor:pointer;border:none;}
+    .btn-primary{background:var(--accent);color:#fff;}
+    .btn-primary:hover{background:var(--accent2);}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);}
+    .btn-ghost:hover{background:var(--bg2);}
+    .hero-stats{display:flex;gap:2.2rem;flex-wrap:wrap;}
+    .stat{display:flex;flex-direction:column;}
+    .stat-num{font-size:1.55rem;font-weight:800;letter-spacing:-0.02em;line-height:1;}
+    .stat-lbl{font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.3rem;}
+    .hero-photo-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:background var(--tr);box-shadow:0 10px 40px rgba(0,0,0,0.08);}
+    [data-theme="dark"] .hero-photo-card{box-shadow:0 10px 40px rgba(0,0,0,0.4);}
+    .hero-photo-wrap{aspect-ratio:4/5;background:var(--bg2);overflow:hidden;}
+    .hero-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+    .hero-photo-meta{padding:1rem 1.2rem;border-top:1px solid var(--border);}
+    .hero-photo-meta strong{display:block;font-size:0.85rem;}
+    .hero-photo-meta span{font-size:0.75rem;color:var(--text2);}
+
+    /* ════════ SECTIONS ════════ */
+    .sections{max-width:1180px;margin:0 auto;padding:0 2rem 5rem;}
+    .section{border-top:1px solid var(--border);padding:3.8rem 0;scroll-margin-top:70px;}
+    .section-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.4rem;}
+    .section-num{font-size:0.72rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;padding-top:0.15rem;white-space:nowrap;}
+    .section-title{font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;}
+    .section-sub{font-size:0.9rem;color:var(--text2);margin-top:-1.8rem;margin-bottom:2.4rem;max-width:640px;}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:start;}
+    .about-text p{color:var(--text2);margin-bottom:1rem;font-size:0.96rem;}
+    .about-text p:last-child{margin-bottom:0;}
+    .about-text strong{color:var(--text);}
+    .about-aside{display:flex;flex-direction:column;gap:0.7rem;}
+    .info-row{display:flex;gap:0.8rem;align-items:flex-start;padding:0.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:background var(--tr);}
+    .info-icon{font-size:1rem;flex-shrink:0;margin-top:0.05rem;}
+    .info-content strong{display:block;font-size:0.82rem;margin-bottom:0.1rem;}
+    .info-content span{font-size:0.78rem;color:var(--text2);}
+
+    /* TOOLKIT */
+    .tool-group{margin-bottom:1.6rem;}
+    .tool-group:last-child{margin-bottom:0;}
+    .tool-group-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin-bottom:0.8rem;}
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.65rem;}
+    .tool-chip{display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.9rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:0.8rem;font-weight:500;color:var(--text);transition:all var(--tr);}
+    .tool-chip:hover{border-color:var(--accent);background:var(--accent-bg);color:var(--accent);}
+    .tool-chip .ti{font-size:1.05rem;}
+
+    /* TIMELINE */
+    .timeline{display:flex;flex-direction:column;gap:1.2rem;}
+    .tl-item{display:grid;grid-template-columns:64px 1fr;gap:1.5rem;padding:1.4rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all var(--tr);}
+    .tl-item:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,0.06);}
+    [data-theme="dark"] .tl-item:hover{box-shadow:0 8px 24px rgba(0,0,0,0.35);}
+    .tl-date-col{display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding-top:0.2rem;}
+    .tl-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+    .tl-line{flex:1;width:1px;background:var(--border);min-height:16px;}
+    .tl-year{font-size:0.68rem;font-weight:700;color:var(--accent);letter-spacing:0.03em;text-align:center;line-height:1.3;}
+    .tl-body h3{font-size:1rem;font-weight:700;margin-bottom:0.2rem;}
+    .tl-meta{font-size:0.75rem;color:var(--text3);margin-bottom:0.7rem;display:flex;gap:0.7rem;flex-wrap:wrap;align-items:center;}
+    .tl-meta .org{color:var(--accent);font-weight:600;}
+    .tl-meta .status{color:var(--accent);font-weight:600;}
+    .tl-list{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
+    .tl-list li{font-size:0.86rem;color:var(--text2);line-height:1.55;padding-left:1.1rem;position:relative;}
+    .tl-list li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:0.7rem;top:0.25rem;}
+    .tl-list li em{color:var(--text);font-style:italic;}
+    .tl-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.85rem;}
+    .tag{font-size:0.69rem;padding:0.2rem 0.6rem;border-radius:20px;background:var(--accent-bg);color:var(--accent);font-weight:500;border:1px solid var(--border);}
+
+    /* FEATURED */
+    .feature{background:linear-gradient(135deg,var(--accent-bg),var(--surface));border:1px solid var(--border);border-radius:16px;padding:2rem;display:grid;grid-template-columns:1.25fr 1fr;gap:2.5rem;align-items:center;}
+    .feature-badge{display:inline-block;background:var(--accent);color:#fff;font-size:0.7rem;font-weight:700;padding:0.25rem 0.7rem;border-radius:5px;letter-spacing:0.05em;margin-bottom:1rem;text-transform:uppercase;}
+    .feature h3{font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:0.5rem;line-height:1.2;}
+    .feature .f-meta{font-size:0.78rem;color:var(--text2);margin-bottom:1rem;}
+    .feature p{font-size:0.9rem;color:var(--text2);line-height:1.7;margin-bottom:1rem;}
+    .feature-models{display:flex;flex-wrap:wrap;gap:0.5rem;}
+    .feature-visual{border-radius:12px;overflow:hidden;border:1px solid var(--border);cursor:zoom-in;background:var(--bg2);}
+    .feature-visual img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform .4s ease;}
+    .feature-visual:hover img{transform:scale(1.03);}
+
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}
+    .gallery-tile{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid var(--border);cursor:zoom-in;background:var(--bg2);}
+    .gallery-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+    .gallery-tile:hover img{transform:scale(1.06);}
+    .gallery-cap{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 0.9rem 0.7rem;font-size:0.76rem;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,0.78));opacity:0;transition:opacity var(--tr);font-weight:500;line-height:1.35;}
+    .gallery-tile:hover .gallery-cap{opacity:1;}
+
+    /* LIGHTBOX */
+    .lb{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
+    .lb.open{display:flex;}
+    .lb img{max-width:90vw;max-height:80vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6);}
+    .lb-cap{color:#eee;font-size:0.9rem;margin-top:1rem;text-align:center;max-width:600px;}
+    .lb-close{position:absolute;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;line-height:1;background:none;border:none;opacity:0.8;}
+    .lb-close:hover{opacity:1;}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.4rem;cursor:pointer;background:none;border:none;opacity:0.6;padding:0 1rem;user-select:none;}
+    .lb-nav:hover{opacity:1;}
+    .lb-prev{left:0.5rem;} .lb-next{right:0.5rem;}
+    .lb-count{position:absolute;bottom:1.2rem;color:#bbb;font-size:0.78rem;}
+
+    /* CREDENTIALS */
+    .cred-layout{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+    .cred-list{display:flex;flex-direction:column;gap:0.7rem;}
+    .cred-item{display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);}
+    .cred-year{font-size:0.7rem;font-weight:700;color:var(--accent);background:var(--accent-bg);padding:0.2rem 0.55rem;border-radius:5px;white-space:nowrap;flex-shrink:0;}
+    .cred-text{font-size:0.86rem;color:var(--text);line-height:1.5;}
+
+    /* DOCUMENTS */
+    .docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.9rem;}
+    .doc-card{display:flex;gap:0.9rem;align-items:center;padding:1.1rem 1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;transition:all var(--tr);color:inherit;}
+    .doc-card:hover{border-color:var(--accent);background:var(--accent-bg);transform:translateY(-1px);}
+    .doc-icon{width:40px;height:40px;background:var(--accent-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+    .doc-text strong{display:block;font-size:0.86rem;}
+    .doc-text span{font-size:0.74rem;color:var(--text2);}
+    .doc-arrow{margin-left:auto;color:var(--text3);font-size:0.9rem;}
+
+    /* LEADERSHIP + LANGUAGES */
+    .ll-layout{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+    .lead-list{display:flex;flex-direction:column;gap:0.7rem;}
+    .lead-item{display:flex;gap:0.8rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:0.86rem;}
+    .lead-item .li-icon{color:var(--accent);}
+    .lead-item span{color:var(--text2);}
+    .lead-item strong{color:var(--text);display:block;}
+    .lang-list{display:flex;flex-direction:column;gap:0.8rem;}
+    .lang-top{display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:0.35rem;}
+    .lang-top .level{color:var(--text2);font-size:0.78rem;}
+    .lang-bar{height:6px;background:var(--bg2);border-radius:4px;overflow:hidden;}
+    .lang-fill{height:100%;background:var(--accent);border-radius:4px;}
+
+    /* REFERENCES */
+    .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+    .ref-card{padding:1.3rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all var(--tr);}
+    .ref-card:hover{border-color:var(--accent);}
+    .ref-name{font-size:0.95rem;font-weight:700;margin-bottom:0.15rem;}
+    .ref-role{font-size:0.78rem;color:var(--text2);line-height:1.5;margin-bottom:0.8rem;}
+    .ref-inst{color:var(--accent);font-weight:600;}
+    .ref-email{font-size:0.78rem;color:var(--accent);display:inline-flex;align-items:center;gap:0.35rem;}
+    .ref-email:hover{text-decoration:underline;}
+
+    /* CONTACT */
+    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+    .contact-card{display:flex;gap:1rem;align-items:flex-start;padding:1.1rem 1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:0.7rem;transition:all var(--tr);color:inherit;}
+    .contact-card:hover{border-color:var(--accent);background:var(--accent-bg);}
+    .contact-card:last-child{margin-bottom:0;}
+    .cc-icon{width:38px;height:38px;background:var(--accent-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;}
+    .cc-text strong{display:block;font-size:0.85rem;}
+    .cc-text span{font-size:0.78rem;color:var(--text2);word-break:break-word;}
+    .contact-map{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;height:100%;min-height:260px;}
+    .contact-map iframe{width:100%;height:100%;min-height:260px;border:none;filter:grayscale(0.25);}
+
+    footer{border-top:1px solid var(--border);padding:1.6rem 2rem;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--text3);flex-wrap:wrap;gap:0.5rem;}
+
+    /* RESPONSIVE */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;gap:2.5rem;padding:100px 1.5rem 3rem;}
+      .hero-photo-card{max-width:280px;}
+      .about-grid,.cred-layout,.ll-layout,.contact-layout,.feature{grid-template-columns:1fr;}
+      .feature{gap:1.5rem;}
+      .feature-visual img{aspect-ratio:16/10;}
+      .sections{padding:0 1.5rem 4rem;}
+      .nav-links{display:none;}
+    }
+    @media (max-width:500px){.hero h1{font-size:2.2rem;}.hero-stats{gap:1.4rem;}}
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">H. Masanja <span>/ Digital Agriculture</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">§ 01 About</a></li>
+      <li><a href="#toolkit">§ 02 Toolkit</a></li>
+      <li><a href="#experience">§ 03 Experience</a></li>
+      <li><a href="#education">§ 04 Education</a></li>
+      <li><a href="#thesis">§ 05 Thesis</a></li>
+      <li><a href="#gallery">§ 06 Gallery</a></li>
+      <li><a href="#documents">§ 07 Documents</a></li>
+      <li><a href="#contact">§ 08 Contact</a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-label">Agricultural Sciences &amp; Engineering · EARTH University</p>
+    <h1>Henry Mashen<br>Masanja</h1>
+    <p class="hero-desc">
+      Agricultural Sciences professional specializing in <strong>precision &amp; digital agriculture</strong>,
+      remote sensing, and geospatial analysis. I build data-driven tools — from UAV imagery to machine
+      learning models — to advance sustainable food systems and global agricultural resilience.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:mmashen@earth.ac.cr">✉ Contact Me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/henry-mashen-masanja-20248012a/" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/Chanx-Charitana/LAB-1" target="_blank" rel="noopener">💻 GitHub</a>
+      <a class="btn btn-ghost" href="#documents">📄 Documents</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">3.6<span style="font-size:0.9rem;color:var(--text3)">/4.0</span></span><span class="stat-lbl">Cumulative GPA</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Languages</span></div>
+      <div class="stat"><span class="stat-num">A1/A3</span><span class="stat-lbl">EU Drone License</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Countries worked</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-card">
+      <div class="hero-photo-wrap">
+        <img src="images/profile.jpeg" alt="Henry Mashen Masanja" />
+      </div>
+      <div class="hero-photo-meta">
+        <strong>Henry Mashen Masanja</strong>
+        <span>BSc Agricultural Sciences &amp; Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ SECTIONS ════════ -->
+<div class="sections">
+
+  <!-- § 01 ABOUT -->
+  <section class="section reveal" id="about">
+    <div class="section-header"><span class="section-num">§ 01</span><h2 class="section-title">About</h2></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a highly motivated final-year <strong>Agricultural Sciences &amp; Engineering</strong> student at EARTH University, Costa Rica, specializing in precision and digital agriculture, remote sensing, and geospatial analysis.</p>
+        <p>I am experienced in <strong>UAV data acquisition and processing</strong> using Pix4D, Agisoft Metashape, QGIS, and Google Earth Engine, and proficient in <strong>Python and R</strong> for spatial modeling, statistical analysis, and machine learning. My work focuses on developing data-driven tools for biomass estimation and precision farm management.</p>
+        <p>I am passionate about applying <strong>geospatial intelligence and AgriTech innovation</strong> to advance sustainable food systems and global agricultural resilience — bridging field-scale agronomy with modern data science.</p>
+      </div>
+      <div class="about-aside">
+        <div class="info-row"><span class="info-icon">🎓</span><div class="info-content"><strong>EARTH University</strong><span>BSc Agricultural Sciences · GPA 3.6/4.0</span></div></div>
+        <div class="info-row"><span class="info-icon">📍</span><div class="info-content"><strong>Based across continents</strong><span>Costa Rica · Denmark · Uganda</span></div></div>
+        <div class="info-row"><span class="info-icon">🛩️</span><div class="info-content"><strong>Licensed UAV Pilot</strong><span>A1/A3 European Drone License</span></div></div>
+        <div class="info-row"><span class="info-icon">🌍</span><div class="info-content"><strong>Focus</strong><span>Precision agriculture · Remote sensing · ML</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 02 TOOLKIT -->
+  <section class="section reveal" id="toolkit">
+    <div class="section-header"><span class="section-num">§ 02</span><h2 class="section-title">Working Toolkit</h2></div>
+    <div class="tool-group">
+      <div class="tool-group-label">UAV &amp; Geospatial</div>
+      <div class="tools-grid">
+        <div class="tool-chip"><span class="ti">🛩️</span> Pix4D</div>
+        <div class="tool-chip"><span class="ti">🗺️</span> Agisoft Metashape</div>
+        <div class="tool-chip"><span class="ti">🌐</span> QGIS</div>
+        <div class="tool-chip"><span class="ti">🌎</span> Google Earth Engine</div>
+        <div class="tool-chip"><span class="ti">📡</span> RTK (SingularXYZ)</div>
+        <div class="tool-chip"><span class="ti">🛰️</span> Remote Sensing</div>
+      </div>
+    </div>
+    <div class="tool-group">
+      <div class="tool-group-label">Programming &amp; Data Science</div>
+      <div class="tools-grid">
+        <div class="tool-chip"><span class="ti">🐍</span> Python</div>
+        <div class="tool-chip"><span class="ti">📊</span> R / RStudio</div>
+        <div class="tool-chip"><span class="ti">📓</span> Google Colab</div>
+        <div class="tool-chip"><span class="ti">🤖</span> Machine Learning</div>
+        <div class="tool-chip"><span class="ti">🌲</span> Random Forest</div>
+        <div class="tool-chip"><span class="ti">⚡</span> XGBoost / SVM</div>
+      </div>
+    </div>
+    <div class="tool-group">
+      <div class="tool-group-label">Sensing &amp; Hardware</div>
+      <div class="tools-grid">
+        <div class="tool-chip"><span class="ti">🌈</span> Multispectral</div>
+        <div class="tool-chip"><span class="ti">📷</span> RGB Imaging</div>
+        <div class="tool-chip"><span class="ti">📐</span> LiDAR</div>
+        <div class="tool-chip"><span class="ti">🌱</span> Minirhizotron</div>
+        <div class="tool-chip"><span class="ti">🔌</span> Arduino</div>
+        <div class="tool-chip"><span class="ti">📋</span> Microsoft Office</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 03 EXPERIENCE -->
+  <section class="section reveal" id="experience">
+    <div class="section-header"><span class="section-num">§ 03</span><h2 class="section-title">Work &amp; Research Experience</h2></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2026 — Now</div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h3>Drones &amp; Topography Scenario Lead</h3>
+          <div class="tl-meta"><span class="org">EARTH University, Costa Rica</span><span class="status">● Current</span></div>
+          <ul class="tl-list">
+            <li>Lead UAV training and geospatial mapping initiatives.</li>
+            <li>Supervise drone data collection, orthomosaic generation, and vegetation index analysis.</li>
+            <li>Guide surveys and generate contour maps using RTK (SingularXYZ) and QGIS with plugins like HCMGIS, OSM Place Search, and OpenTopography DEM Downloader.</li>
+            <li>Coordinate weekly field operations and mentor first- and second-year student teams in applied precision agriculture.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag">UAV</span><span class="tag">RTK</span><span class="tag">QGIS</span><span class="tag">Leadership</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2025 — Now</div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h3>Undergraduate Thesis — UAV-Based Biomass Estimation for Kernza</h3>
+          <div class="tl-meta"><span class="org">EARTH University</span><span class="status">● In Progress</span><span>Expected Nov 2026</span></div>
+          <ul class="tl-list">
+            <li>Developing a UAV-based machine learning regression model to estimate aboveground biomass of Kernza using multispectral imagery and ground-truth data collected at Aarhus University, Denmark.</li>
+            <li>Generating orthomosaics and vegetation indices using Pix4D and QGIS.</li>
+            <li>Applying Python in Google Colab for data processing, feature engineering, and model training.</li>
+            <li>Preparing thesis manuscript documenting model development, validation, and biomass estimation results.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag">Thesis</span><span class="tag">Multispectral</span><span class="tag">Python</span><span class="tag">Kernza</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h3>Research Assistant Intern</h3>
+          <div class="tl-meta"><span class="org">Aarhus University, Denmark</span></div>
+          <ul class="tl-list">
+            <li>Conducted drone flights (RGB, multispectral, LiDAR) and aided image processing using Pix4D and QGIS.</li>
+            <li>Conducted root imaging using multispectral and RGB minirhizotron cameras.</li>
+            <li>Assisted with transplanting, weeding, harvesting, seed cleaning, root washing, and greenhouse, field, and laboratory work.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag">LiDAR</span><span class="tag">Root Imaging</span><span class="tag">Field Research</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2023</div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h3>Virtual Farm &amp; e-Learning Platform Developer</h3>
+          <div class="tl-meta"><span class="org">EARTH University</span></div>
+          <ul class="tl-list">
+            <li>Edited and tested app and website content for virtual farming platforms.</li>
+            <li>Generated analytical reports and managed content uploads for e-learning modules.</li>
+            <li>Supported the development of interactive agricultural training tools.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag">EdTech</span><span class="tag">Content</span><span class="tag">Analytics</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2023</div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h3>Student Researcher</h3>
+          <div class="tl-meta"><span class="org">Renewable Energy Research Center — EARTH University</span></div>
+          <ul class="tl-list">
+            <li>Designed renewable energy systems for agricultural applications using solar panels.</li>
+            <li>Implemented water-pumping solutions to support animal farming operations.</li>
+            <li>Explored innovative uses of renewable energy in agronomy.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag">Solar</span><span class="tag">Renewable Energy</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2020 — 2022</div></div>
+        <div class="tl-body">
+          <h3>Technician</h3>
+          <div class="tl-meta"><span class="org">Security Group Africa, Uganda</span></div>
+          <ul class="tl-list">
+            <li>Installed and maintained security systems, including CCTV, intrusion alarms, and automated gates.</li>
+            <li>Provided technical support to clients in the field and remotely.</li>
+            <li>Enhanced customer satisfaction by resolving issues efficiently.</li>
+          </ul>
+          <div class="tl-tags"><span class="tag">Systems</span><span class="tag">CCTV</span><span class="tag">Automation</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- § 04 EDUCATION -->
+  <section class="section reveal" id="education">
+    <div class="section-header"><span class="section-num">§ 04</span><h2 class="section-title">Education</h2></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2023 — Now</div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h3>BSc Agricultural Sciences &amp; Engineering</h3>
+          <div class="tl-meta"><span class="org">EARTH University, Costa Rica</span><span>GPA 3.6 / 4.0</span></div>
+          <ul class="tl-list">
+            <li><em>Statistical Analysis in Banana &amp; Plantain Cultivation</em> — assessed growth factors (height, circumference, leaf emission) of <em>Musa acuminata</em> 'Gran Enano'.</li>
+            <li><em>Integrated Pest Management</em> — developed sustainable IPM strategies for controlling <em>Tuta absoluta</em> in tomatoes in Tanzania.</li>
+            <li><em>Coffee Fungicide Plan</em> — designed a fungicide rotation plan to manage <em>Colletotrichum kahawae</em> in Tanzanian coffee plantations.</li>
+            <li><em>Ionization Smoke Detector Study</em> — researched and presented on the chemistry inside fire alarm systems.</li>
+            <li>Coursework: Precision Agriculture, Agroforestry, GIS &amp; Topography, Renewable Energy, Ecology, Statistics, Entomology, Chemistry.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h3>CLUVEX Climate University Virtual Exchange (ATM 398)</h3>
+          <div class="tl-meta"><span class="org">University of Helsinki, Finland</span><span>1 ECTS</span></div>
+          <ul class="tl-list">
+            <li>Analyzed the impact of climate change and explored mitigation and adaptation strategies for future resilience.</li>
+            <li>Studied planetary boundaries and developed frameworks for a sustainable future.</li>
+            <li>Integrated artistic, critical-thinking, and scientific data to produce comprehensive analytical reports and presentations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2014 — 2016</div></div>
+        <div class="tl-body">
+          <h3>Telecommunications Engineering Diploma</h3>
+          <div class="tl-meta"><span class="org">Uganda Institute of Information &amp; Communications Technology</span></div>
+          <ul class="tl-list">
+            <li>Electrical &amp; Electronics Engineering, ICT, and Business Skills.</li>
+            <li>Networking, security systems (CCTV, intrusion alarms), server management, automation, cabling &amp; rack management.</li>
+            <li>Drones, GIS, Arduino, RStudio, and Microsoft Office.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- § 05 FEATURED THESIS -->
+  <section class="section reveal" id="thesis">
+    <div class="section-header"><span class="section-num">§ 05</span><h2 class="section-title">Featured Research</h2></div>
+    <div class="feature">
+      <div class="feature-content">
+        <span class="feature-badge">BSc Thesis · In Progress</span>
+        <h3>Estimating Aboveground Biomass of Kernza Using UAV Multispectral Imagery &amp; Machine Learning</h3>
+        <div class="f-meta">EARTH University × Aarhus University · Expected November 2026</div>
+        <p>I design and execute UAV data-collection campaigns, preprocess high-resolution multispectral and RGB imagery, perform image segmentation and feature extraction, and develop machine learning regression models validated against ground-truth field measurements collected in Denmark.</p>
+        <p>The full pipeline runs in Python (Google Colab), with orthomosaics and vegetation indices generated in Pix4D and QGIS.</p>
+        <div class="feature-models">
+          <span class="tag">Random Forest</span><span class="tag">Support Vector Machine</span>
+          <span class="tag">XGBoost</span><span class="tag">Vegetation Indices</span><span class="tag">Feature Engineering</span>
+        </div>
+      </div>
+      <div class="feature-visual lb-trigger" data-full="images/thesis-poster.png" data-cap="Presenting my Kernza biomass estimation thesis poster at EARTH University.">
+        <img src="images/thesis-poster.png" alt="Henry presenting his Kernza thesis poster" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- § 06 GALLERY -->
+  <section class="section reveal" id="gallery">
+    <div class="section-header"><span class="section-num">§ 06</span><h2 class="section-title">Field &amp; Research Gallery</h2></div>
+    <p class="section-sub">Drone flights, Kernza field campaigns, root imaging, and research presentations. Click any image to enlarge.</p>
+    <div class="gallery-grid" id="gallery">
+      <div class="gallery-tile lb-trigger" data-full="images/uav-drone-flight.jpeg" data-cap="UAV drone flight for multispectral data capture.">
+        <img src="images/uav-drone-flight.jpeg" alt="UAV drone flight" loading="lazy" />
+        <div class="gallery-cap">UAV drone flight — multispectral capture</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/gcp-installation.jpeg" data-cap="Installing ground control points (GCPs) for georeferencing.">
+        <img src="images/gcp-installation.jpeg" alt="Ground control points installation" loading="lazy" />
+        <div class="gallery-cap">Ground control point installation</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/kernza-transplanting.jpeg" data-cap="Transplanting Kernza from greenhouse to field.">
+        <img src="images/kernza-transplanting.jpeg" alt="Transplanting Kernza" loading="lazy" />
+        <div class="gallery-cap">Transplanting Kernza to the field</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/kernza-labelling.jpeg" data-cap="Labelling Kernza plots in the field.">
+        <img src="images/kernza-labelling.jpeg" alt="Labelling Kernza in field" loading="lazy" />
+        <div class="gallery-cap">Labelling Kernza plots</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/kernza-harvesting.jpeg" data-cap="Kernza harvesting for ground-truth biomass data.">
+        <img src="images/kernza-harvesting.jpeg" alt="Kernza harvesting" loading="lazy" />
+        <div class="gallery-cap">Kernza harvesting</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/root-imaging-1.jpeg" data-cap="Root imaging using a minirhizotron camera.">
+        <img src="images/root-imaging-1.jpeg" alt="Root imaging with minirhizotron camera" loading="lazy" />
+        <div class="gallery-cap">Minirhizotron root imaging</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/root-imaging-2.jpeg" data-cap="Minirhizotron root scanning in the field.">
+        <img src="images/root-imaging-2.jpeg" alt="Minirhizotron root scanning" loading="lazy" />
+        <div class="gallery-cap">Root scanning in the field</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/kernza-pix4d.jpeg" data-cap="Kernza image processing and orthomosaic generation in Pix4D.">
+        <img src="images/kernza-pix4d.jpeg" alt="Kernza image processing in Pix4D" loading="lazy" />
+        <div class="gallery-cap">Image processing in Pix4D</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/mentoring.png" data-cap="Mentoring student field teams at EARTH University.">
+        <img src="images/mentoring.png" alt="Mentoring students" loading="lazy" />
+        <div class="gallery-cap">Mentoring student field teams</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/internship-presentation.jpeg" data-cap="Presenting my internship research.">
+        <img src="images/internship-presentation.jpeg" alt="Internship presentation" loading="lazy" />
+        <div class="gallery-cap">Presenting my internship research</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/presentation-hydrosat.jpeg" data-cap="Presentation at Hydrosat.">
+        <img src="images/presentation-hydrosat.jpeg" alt="Presentation at Hydrosat" loading="lazy" />
+        <div class="gallery-cap">Presentation at Hydrosat</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-poster.png" data-cap="My Kernza biomass estimation thesis poster.">
+        <img src="images/thesis-poster.png" alt="Thesis poster" loading="lazy" />
+        <div class="gallery-cap">Thesis poster presentation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 07 DOCUMENTS -->
+  <section class="section reveal" id="documents">
+    <div class="section-header"><span class="section-num">§ 07</span><h2 class="section-title">Documents &amp; Downloads</h2></div>
+    <p class="section-sub">CV, cover letter, transcripts, and certificates — all available as PDFs. Click any to open.</p>
+    <div class="docs-grid">
+      <a class="doc-card" href="documents/CV.pdf" target="_blank">
+        <span class="doc-icon">📄</span><span class="doc-text"><strong>Curriculum Vitae</strong><span>Full CV — PDF</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/Cover-Letter.pdf" target="_blank">
+        <span class="doc-icon">✍️</span><span class="doc-text"><strong>Cover Letter</strong><span>PDF</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/Letter-of-Interest.pdf" target="_blank">
+        <span class="doc-icon">📝</span><span class="doc-text"><strong>Letter of Interest</strong><span>PDF</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/Transcript-EARTH.pdf" target="_blank">
+        <span class="doc-icon">📊</span><span class="doc-text"><strong>Academic Transcript</strong><span>EARTH University</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/Transcript-Helsinki.pdf" target="_blank">
+        <span class="doc-icon">📈</span><span class="doc-text"><strong>Transcript</strong><span>University of Helsinki</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/Enrollment-Certification.pdf" target="_blank">
+        <span class="doc-icon">🎓</span><span class="doc-text"><strong>Enrollment Certification</strong><span>EARTH University Registrar</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/Drone-License.pdf" target="_blank">
+        <span class="doc-icon">🛩️</span><span class="doc-text"><strong>A1/A3 Drone Pilot Licence</strong><span>European certificate</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/NASA-Remote-Sensing.pdf" target="_blank">
+        <span class="doc-icon">🛰️</span><span class="doc-text"><strong>NASA ARSET</strong><span>Fundamentals of Remote Sensing</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/Erasmus-CLUVEX-Certificate.pdf" target="_blank">
+        <span class="doc-icon">🏅</span><span class="doc-text"><strong>Erasmus+ CLUVEX</strong><span>Climate University certificate</span></span><span class="doc-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- § 08 CREDENTIALS -->
+  <section class="section reveal" id="credentials">
+    <div class="section-header"><span class="section-num">§ 08</span><h2 class="section-title">Certifications &amp; Conferences</h2></div>
+    <div class="cred-layout">
+      <div>
+        <div class="tool-group-label">Certifications</div>
+        <div class="cred-list">
+          <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">A1/A3 European Drone License</span></div>
+          <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">NASA ARSET — Fundamentals of Remote Sensing</span></div>
+          <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-group-label">Conferences</div>
+        <div class="cred-list">
+          <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">iClimate — Aarhus University Annual Conference</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 09 LEADERSHIP & LANGUAGES -->
+  <section class="section reveal" id="leadership">
+    <div class="section-header"><span class="section-num">§ 09</span><h2 class="section-title">Leadership &amp; Languages</h2></div>
+    <div class="ll-layout">
+      <div>
+        <div class="tool-group-label">Leadership &amp; Volunteering</div>
+        <div class="lead-list">
+          <div class="lead-item"><span class="li-icon">★</span><div><strong>Student Government Representative</strong><span>EARTH University, Costa Rica</span></div></div>
+          <div class="lead-item"><span class="li-icon">★</span><div><strong>Community Outreach Volunteer</strong><span>Club de Paz, San José, Costa Rica</span></div></div>
+          <div class="lead-item"><span class="li-icon">★</span><div><strong>Volunteer</strong><span>Freedom in Creation, Gulu, Uganda</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="tool-group-label">Languages</div>
+        <div class="lang-list">
+          <div class="lang-row"><div class="lang-top"><span>English</span><span class="level">Advanced</span></div><div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div></div>
+          <div class="lang-row"><div class="lang-top"><span>Spanish</span><span class="level">Advanced</span></div><div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div></div>
+          <div class="lang-row"><div class="lang-top"><span>Lusoga</span><span class="level">Native</span></div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
+          <div class="lang-row"><div class="lang-top"><span>Luganda</span><span class="level">Native</span></div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 10 REFERENCES -->
+  <section class="section reveal" id="references">
+    <div class="section-header"><span class="section-num">§ 10</span><h2 class="section-title">References</h2></div>
+    <div class="refs-grid">
+      <div class="ref-card">
+        <div class="ref-name">Dr. Eusun Han, PhD</div>
+        <div class="ref-role">Associate Professor, Sustainable Perennial Cropping Systems<br><span class="ref-inst">Aarhus University, Denmark</span></div>
+        <a class="ref-email" href="mailto:eusun.han@agro.au.dk">✉ eusun.han@agro.au.dk</a>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Yuma Ikeda, MSc</div>
+        <div class="ref-role">PhD Student — Plant Phenotyping, Phenomic Prediction, Crop Physiology<br><span class="ref-inst">Aarhus University, Denmark</span></div>
+        <a class="ref-email" href="mailto:yuik@agro.au.dk">✉ yuik@agro.au.dk</a>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Victor Hugo Morales Peña, PhD</div>
+        <div class="ref-role">Professor — Tropical Forestry, Agroforestry, Remote Sensing<br><span class="ref-inst">EARTH University, Costa Rica</span></div>
+        <a class="ref-email" href="mailto:vmorales@earth.ac.cr">✉ vmorales@earth.ac.cr</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 11 CONTACT -->
+  <section class="section reveal" id="contact">
+    <div class="section-header"><span class="section-num">§ 11</span><h2 class="section-title">Contact</h2></div>
+    <div class="contact-layout">
+      <div>
+        <a class="contact-card" href="mailto:mmashen@earth.ac.cr">
+          <span class="cc-icon">✉️</span><div class="cc-text"><strong>mmashen@earth.ac.cr</strong><span>masanjahenry@yahoo.com</span></div>
+        </a>
+        <a class="contact-card" href="tel:+4571506100">
+          <span class="cc-icon">📞</span><div class="cc-text"><strong>+45 71 50 61 00</strong><span>Phone / WhatsApp</span></div>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/henry-mashen-masanja-20248012a/" target="_blank" rel="noopener">
+          <span class="cc-icon">💼</span><div class="cc-text"><strong>LinkedIn</strong><span>Henry Mashen Masanja</span></div>
+        </a>
+        <a class="contact-card" href="https://github.com/Chanx-Charitana/LAB-1" target="_blank" rel="noopener">
+          <span class="cc-icon">💻</span><div class="cc-text"><strong>GitHub</strong><span>github.com/Chanx-Charitana</span></div>
+        </a>
+        <div class="contact-card" style="cursor:default;">
+          <span class="cc-icon">🎓</span><div class="cc-text"><strong>EARTH University</strong><span>Guácimo, Limón, Costa Rica</span></div>
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-83.62%2C10.18%2C-83.52%2C10.24&layer=mapnik&marker=10.2106%2C-83.5805" allowfullscreen loading="lazy" title="EARTH University, Costa Rica"></iframe>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <span>© 2026 Henry Mashen Masanja</span>
+  <span>Agricultural Sciences &amp; Engineering · Precision &amp; Digital Agriculture</span>
+</footer>
+
+<!-- ════════ LIGHTBOX ════════ -->
+<div class="lb" id="lightbox">
+  <button class="lb-close" id="lbClose" title="Close">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" title="Previous">‹</button>
+  <img id="lbImg" src="" alt="" />
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-count" id="lbCount"></div>
+  <button class="lb-nav lb-next" id="lbNext" title="Next">›</button>
+</div>
+
+<script>
+  // ── THEME TOGGLE ──
+  const btn = document.getElementById('themeBtn');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme') || 'light';
+  root.setAttribute('data-theme', saved);
+  btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', next);
+  });
+
+  // ── ACTIVE NAV LINK ──
+  const navAs = document.querySelectorAll('.nav-links a');
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector('.nav-links a[href="#' + e.target.id + '"]');
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.section').forEach(s => navObserver.observe(s));
+
+  // ── REVEAL ON SCROLL ──
+  const revObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revObserver.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revObserver.observe(el));
+
+  // ── LIGHTBOX ──
+  const triggers = Array.from(document.querySelectorAll('.lb-trigger'));
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  const lbCount = document.getElementById('lbCount');
+  let idx = 0;
+
+  function show(i) {
+    idx = (i + triggers.length) % triggers.length;
+    const t = triggers[idx];
+    lbImg.src = t.dataset.full;
+    lbImg.alt = t.dataset.cap || '';
+    lbCap.textContent = t.dataset.cap || '';
+    lbCount.textContent = (idx + 1) + ' / ' + triggers.length;
+  }
+  function openLb(i) { show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+
+  triggers.forEach((t, i) => t.addEventListener('click', () => openLb(i)));
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', () => show(idx - 1));
+  document.getElementById('lbNext').addEventListener('click', () => show(idx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+</script>
+
+</body>
+</html>
