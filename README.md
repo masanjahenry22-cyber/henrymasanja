@@ -77,6 +77,9 @@ GitHub auto-issues a free SSL cert (can take a few minutes to an hour).
 
 ## Publishing updates (the everyday loop)
 
+**Easiest:** double-click **`publish.bat`** — it commits and pushes for you.
+
+Or run it manually:
 ```bash
 git add -A
 git commit -m "update site"
