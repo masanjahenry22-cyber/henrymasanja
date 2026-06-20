@@ -47,7 +47,7 @@ gh repo create henrymasanja --public --source=. --remote=origin --push
 
 ### 2. Enable Pages from the main branch root
 ```bash
-gh api -X POST repos/YOURUSER/henrymasanja/pages \
+gh api -X POST repos/masanjahenry22-cyber/henrymasanja/pages \
   -f "source[branch]=main" -f "source[path]=/"
 ```
 Your site goes live at `https://chanx-charitana.github.io/henrymasanja/`.
