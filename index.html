@@ -115,7 +115,7 @@
     .tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.65rem;}
     .tool-chip{display:flex;align-items:center;gap:0.55rem;padding:0.65rem 0.9rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:0.8rem;font-weight:500;color:var(--text);transition:all var(--tr);}
     .tool-chip:hover{border-color:var(--accent);background:var(--accent-bg);color:var(--accent);}
-    .tool-chip .ti{font-size:1.05rem;}
+    .tool-chip .ti{width:1.25rem;height:1.25rem;flex-shrink:0;object-fit:contain;display:block;}
 
     /* TIMELINE */
     .timeline{display:flex;flex-direction:column;gap:1.2rem;}
@@ -271,7 +271,7 @@
       <a class="btn btn-ghost" href="#documents">📄 All Documents</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><span class="stat-num">3.6<span style="font-size:0.9rem;color:var(--text3)">/4.0</span></span><span class="stat-lbl">Cumulative GPA</span></div>
+      <div class="stat"><span class="stat-num">90<span style="font-size:0.9rem;color:var(--text3)">/100</span></span><span class="stat-lbl">Cumulative GPA</span></div>
       <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Languages</span></div>
       <div class="stat"><span class="stat-num">A1/A3</span><span class="stat-lbl">EU Drone License</span></div>
       <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Countries worked</span></div>
@@ -303,7 +303,7 @@
         <p>I am passionate about applying <strong>geospatial intelligence and AgriTech innovation</strong> to advance sustainable food systems and global agricultural resilience — bridging field-scale agronomy with modern data science.</p>
       </div>
       <div class="about-aside">
-        <div class="info-row"><span class="info-icon">🎓</span><div class="info-content"><strong>EARTH University</strong><span>BSc Agricultural Sciences · GPA 3.6/4.0</span></div></div>
+        <div class="info-row"><span class="info-icon">🎓</span><div class="info-content"><strong>EARTH University</strong><span>BSc Agricultural Sciences · GPA 90/100</span></div></div>
         <div class="info-row"><span class="info-icon">📍</span><div class="info-content"><strong>Based across continents</strong><span>Costa Rica · Denmark · Uganda</span></div></div>
         <div class="info-row"><span class="info-icon">🛩️</span><div class="info-content"><strong>Licensed UAV Pilot</strong><span>A1/A3 European Drone License</span></div></div>
         <div class="info-row"><span class="info-icon">🌍</span><div class="info-content"><strong>Focus</strong><span>Precision agriculture · Remote sensing · ML</span></div></div>
@@ -351,34 +351,33 @@
     <div class="tool-group">
       <div class="tool-group-label">UAV &amp; Geospatial</div>
       <div class="tools-grid">
-        <div class="tool-chip"><span class="ti">🛩️</span> Pix4D</div>
-        <div class="tool-chip"><span class="ti">🗺️</span> Agisoft Metashape</div>
-        <div class="tool-chip"><span class="ti">🌐</span> QGIS</div>
-        <div class="tool-chip"><span class="ti">🌎</span> Google Earth Engine</div>
-        <div class="tool-chip"><span class="ti">📡</span> RTK (SingularXYZ)</div>
-        <div class="tool-chip"><span class="ti">🛰️</span> Remote Sensing</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/drone.svg" alt=""> Pix4D</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/map.svg" alt=""> Agisoft Metashape</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/globe-grid.svg" alt=""> QGIS</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/globe-americas.svg" alt=""> Google Earth Engine</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/satellite-antenna.svg" alt=""> RTK (SingularXYZ)</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/satellite.svg" alt=""> Remote Sensing</div>
       </div>
     </div>
     <div class="tool-group">
       <div class="tool-group-label">Programming &amp; Data Science</div>
       <div class="tools-grid">
-        <div class="tool-chip"><span class="ti">🐍</span> Python</div>
-        <div class="tool-chip"><span class="ti">📊</span> R / RStudio</div>
-        <div class="tool-chip"><span class="ti">📓</span> Google Colab</div>
-        <div class="tool-chip"><span class="ti">🤖</span> Machine Learning</div>
-        <div class="tool-chip"><span class="ti">🌲</span> Random Forest</div>
-        <div class="tool-chip"><span class="ti">⚡</span> XGBoost / SVM</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/snake.svg" alt=""> Python</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/barchart.svg" alt=""> R / RStudio</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/notebook.svg" alt=""> Google Colab</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/robot.svg" alt=""> Machine Learning</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/brain.svg" alt=""> Deep Learning</div>
       </div>
     </div>
     <div class="tool-group">
       <div class="tool-group-label">Sensing &amp; Hardware</div>
       <div class="tools-grid">
-        <div class="tool-chip"><span class="ti">🌈</span> Multispectral</div>
-        <div class="tool-chip"><span class="ti">📷</span> RGB Imaging</div>
-        <div class="tool-chip"><span class="ti">📐</span> LiDAR</div>
-        <div class="tool-chip"><span class="ti">🌱</span> Minirhizotron</div>
-        <div class="tool-chip"><span class="ti">🔌</span> Arduino</div>
-        <div class="tool-chip"><span class="ti">📋</span> Microsoft Office</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/rainbow.svg" alt=""> Multispectral</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/camera.svg" alt=""> RGB Imaging</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/ruler.svg" alt=""> LiDAR</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/seedling.svg" alt=""> Minirhizotron Camera</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/plug.svg" alt=""> Arduino</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/clipboard.svg" alt=""> Microsoft Office</div>
       </div>
     </div>
   </section>
@@ -486,7 +485,7 @@
         <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2023 — Now</div><div class="tl-line"></div></div>
         <div class="tl-body">
           <h3>BSc Agricultural Sciences &amp; Engineering</h3>
-          <div class="tl-meta"><span class="org">EARTH University, Costa Rica</span><span>GPA 3.6 / 4.0</span></div>
+          <div class="tl-meta"><span class="org">EARTH University, Costa Rica</span><span>GPA 90 / 100</span></div>
           <ul class="tl-list">
             <li><em>Statistical Analysis in Banana &amp; Plantain Cultivation</em> — assessed growth factors (height, circumference, leaf emission) of <em>Musa acuminata</em> 'Gran Enano'.</li>
             <li><em>Integrated Pest Management</em> — developed sustainable IPM strategies for controlling <em>Tuta absoluta</em> in tomatoes in Tanzania.</li>
