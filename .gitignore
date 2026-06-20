@@ -5,6 +5,9 @@
 images/_archive/
 documents/_archive/
 
+# Source documents (Word) — only the exported PDFs are published
+*.docx
+
 # OS & editor junk
 .DS_Store
 Thumbs.db
