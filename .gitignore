@@ -1,6 +1,10 @@
 # Local tooling / preview config
 .claude/
 
+# Archived / unsorted originals (kept on disk, excluded from repo & live site)
+images/_archive/
+documents/_archive/
+
 # OS & editor junk
 .DS_Store
 Thumbs.db
