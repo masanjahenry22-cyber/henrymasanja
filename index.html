@@ -203,6 +203,9 @@
     .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
     .ref-card{padding:1.3rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all var(--tr);}
     .ref-card:hover{border-color:var(--accent);}
+    .ref-head{display:flex;gap:0.85rem;align-items:center;margin-bottom:0.85rem;}
+    .ref-avatar{width:52px;height:52px;border-radius:50%;flex-shrink:0;overflow:hidden;background:var(--accent);color:#fff;font-weight:700;font-size:0.95rem;display:flex;align-items:center;justify-content:center;}
+    .ref-avatar img{width:100%;height:100%;object-fit:cover;}
     .ref-name{font-size:0.95rem;font-weight:700;margin-bottom:0.15rem;}
     .ref-role{font-size:0.78rem;color:var(--text2);line-height:1.5;margin-bottom:0.8rem;}
     .ref-inst{color:var(--accent);font-weight:600;}
@@ -734,17 +737,34 @@
     <div class="section-header"><span class="section-num">§ 11</span><h2 class="section-title">References</h2></div>
     <div class="refs-grid">
       <div class="ref-card">
-        <div class="ref-name">Dr. Eusun Han, PhD</div>
-        <div class="ref-role">Associate Professor, Sustainable Perennial Cropping Systems<br><span class="ref-inst">Aarhus University, Denmark</span></div>
+        <div class="ref-head">
+          <div class="ref-avatar"><img src="images/refs/eusun-han.png" alt="Dr. Eusun Han" /></div>
+          <div class="ref-name">Dr. Eusun Han, PhD</div>
+        </div>
+        <div class="ref-role">Associate Professor, Sustainable Perennial Cropping Systems<br><span class="ref-inst">Aarhus University, Denmark</span><br>Supervised my 2025 research internship.</div>
         <a class="ref-email" href="mailto:eusun.han@agro.au.dk">✉ eusun.han@agro.au.dk</a>
       </div>
       <div class="ref-card">
-        <div class="ref-name">Yuma Ikeda, MSc</div>
-        <div class="ref-role">PhD Student — Plant Phenotyping, Phenomic Prediction, Crop Physiology<br><span class="ref-inst">Aarhus University, Denmark</span></div>
+        <div class="ref-head">
+          <div class="ref-avatar">YI</div>
+          <div class="ref-name">Yuma Ikeda, MSc</div>
+        </div>
+        <div class="ref-role">PhD Student — Plant Phenotyping, Phenomic Prediction, Crop Physiology<br><span class="ref-inst">Aarhus University, Denmark</span><br>Research collaborator on the Kernza project.</div>
         <a class="ref-email" href="mailto:yuik@agro.au.dk">✉ yuik@agro.au.dk</a>
       </div>
       <div class="ref-card">
-        <div class="ref-name">Victor Hugo Morales Peña, PhD</div>
+        <div class="ref-head">
+          <div class="ref-avatar">AP</div>
+          <div class="ref-name">Alexa Nicole Peterson</div>
+        </div>
+        <div class="ref-role">PhD Researcher — Perennial Grains, Sustainable Agriculture, Plant Breeding<br><span class="ref-inst">Aarhus University, Denmark</span></div>
+        <a class="ref-email" href="mailto:alexa.peterson@agro.au.dk">✉ alexa.peterson@agro.au.dk</a>
+      </div>
+      <div class="ref-card">
+        <div class="ref-head">
+          <div class="ref-avatar">VM</div>
+          <div class="ref-name">Victor Hugo Morales Peña, PhD</div>
+        </div>
         <div class="ref-role">Professor — Tropical Forestry, Agroforestry, Remote Sensing<br><span class="ref-inst">EARTH University, Costa Rica</span></div>
         <a class="ref-email" href="mailto:vmorales@earth.ac.cr">✉ vmorales@earth.ac.cr</a>
       </div>
