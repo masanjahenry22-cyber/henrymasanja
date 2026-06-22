@@ -223,6 +223,33 @@
     .contact-map{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;height:100%;min-height:260px;}
     .contact-map iframe{width:100%;height:100%;min-height:260px;border:none;filter:grayscale(0.25);}
 
+    /* command palette (⌘K) */
+    .kbd-btn{display:inline-flex;align-items:center;gap:0.3rem;height:32px;padding:0 0.6rem;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;font-size:0.72rem;font-weight:600;transition:all var(--tr);}
+    .kbd-btn:hover{color:var(--text);background:var(--bg2);}
+    .kbd-btn kbd{font-family:inherit;font-size:0.7rem;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:0 0.25rem;}
+    .cmdk{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.45);display:none;align-items:flex-start;justify-content:center;padding-top:12vh;backdrop-filter:blur(2px);}
+    .cmdk.open{display:flex;}
+    .cmdk-box{width:92%;max-width:560px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.35);}
+    .cmdk-input{width:100%;border:none;outline:none;background:transparent;color:var(--text);font-size:1rem;padding:1rem 1.2rem;border-bottom:1px solid var(--border);font-family:inherit;}
+    .cmdk-list{max-height:50vh;overflow-y:auto;padding:0.4rem;}
+    .cmdk-item{display:flex;align-items:center;gap:0.7rem;padding:0.6rem 0.8rem;border-radius:8px;cursor:pointer;font-size:0.88rem;color:var(--text);}
+    .cmdk-item .ic{width:24px;text-align:center;}
+    .cmdk-item .sub{margin-left:auto;font-size:0.7rem;color:var(--text3);}
+    .cmdk-item.active,.cmdk-item:hover{background:var(--accent-bg);color:var(--accent);}
+    .cmdk-empty{padding:1rem 1.2rem;color:var(--text3);font-size:0.85rem;}
+
+    /* methodology pipeline */
+    .pipeline-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin:1.4rem 0 0.9rem;}
+    .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0.6rem;}
+    .pstep{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.9rem;position:relative;transition:all var(--tr);}
+    .pstep:hover{border-color:var(--accent);}
+    .pstep .pnum{font-size:0.65rem;font-weight:700;color:var(--accent);letter-spacing:0.08em;}
+    .pstep h5{font-size:0.82rem;font-weight:700;margin:0.25rem 0 0.3rem;}
+    .pstep p{font-size:0.72rem;color:var(--text2);line-height:1.45;}
+    .pstep:not(:last-child)::after{content:'→';position:absolute;right:-0.55rem;top:50%;transform:translateY(-50%);color:var(--text3);font-size:0.85rem;z-index:1;}
+    @media (max-width:760px){.pipeline{grid-template-columns:1fr 1fr;}.pstep:not(:last-child)::after{display:none;}}
+    @media (max-width:420px){.pipeline{grid-template-columns:1fr;}}
+
     footer{border-top:1px solid var(--border);padding:1.6rem 2rem;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--text3);flex-wrap:wrap;gap:0.5rem;}
 
     /* RESPONSIVE */
@@ -253,7 +280,10 @@
       <li><a href="#documents">§ 08 Documents</a></li>
       <li><a href="#contact">§ 12 Contact</a></li>
     </ul>
-    <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+      <button class="kbd-btn" id="cmdkBtn" title="Quick search (Ctrl/⌘ K)"><span>Search</span> <kbd>⌘K</kbd></button>
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+    </div>
   </div>
 </nav>
 
@@ -537,14 +567,27 @@
         <div class="f-meta">EARTH University × Aarhus University · Expected November 2026</div>
         <p>I design and execute UAV data-collection campaigns, preprocess high-resolution multispectral and RGB imagery, perform image segmentation and feature extraction, and develop machine learning regression models validated against ground-truth field measurements collected in Denmark.</p>
         <p>The full pipeline runs in Python (Google Colab), with orthomosaics and vegetation indices generated in Pix4D and QGIS.</p>
+        <div class="f-meta" style="margin-top:0.25rem;"><span style="color:var(--accent);font-weight:600;">● In Progress</span> &nbsp;·&nbsp; 2025 – 2026 &nbsp;·&nbsp; EARTH University × Aarhus University</div>
         <div class="feature-models">
-          <span class="tag">Random Forest</span><span class="tag">Support Vector Machine</span>
+          <span class="tag">Kernza</span><span class="tag">UAV Multispectral</span><span class="tag">Random Forest</span><span class="tag">Support Vector Machine</span>
           <span class="tag">XGBoost</span><span class="tag">Vegetation Indices</span><span class="tag">Feature Engineering</span>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;">
+          <a class="btn btn-ghost" href="https://github.com/masanjahenry22-cyber" target="_blank" rel="noopener">💻 Analysis code</a>
         </div>
       </div>
       <div class="feature-visual lb-trigger" data-full="images/thesis-poster.png" data-cap="Presenting my Kernza biomass estimation thesis poster at EARTH University.">
         <img src="images/thesis-poster.png" alt="Henry presenting his Kernza thesis poster" loading="lazy" />
       </div>
+    </div>
+
+    <div class="pipeline-label">Methodology</div>
+    <div class="pipeline">
+      <div class="pstep"><div class="pnum">01</div><h5>Field Capture</h5><p>UAV multispectral &amp; RGB flights plus ground-truth biomass sampling (Aarhus, Denmark).</p></div>
+      <div class="pstep"><div class="pnum">02</div><h5>Preprocessing</h5><p>Orthomosaics &amp; vegetation indices generated in Pix4D and QGIS.</p></div>
+      <div class="pstep"><div class="pnum">03</div><h5>Feature Engineering</h5><p>Spectral and index features extracted and prepared in Python (Google Colab).</p></div>
+      <div class="pstep"><div class="pnum">04</div><h5>Model Training</h5><p>Regression models — Random Forest, SVM, and XGBoost — trained on the feature set.</p></div>
+      <div class="pstep"><div class="pnum">05</div><h5>Validation</h5><p>Predictions validated against ground-truth field measurements; biomass mapped.</p></div>
     </div>
   </section>
 
@@ -806,6 +849,14 @@
   <span>Agricultural Sciences &amp; Engineering · Precision &amp; Digital Agriculture</span>
 </footer>
 
+<!-- ════════ COMMAND PALETTE ════════ -->
+<div class="cmdk" id="cmdk">
+  <div class="cmdk-box">
+    <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Jump to a section or action…" autocomplete="off" />
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+
 <!-- ════════ LIGHTBOX ════════ -->
 <div class="lb" id="lightbox">
   <button class="lb-close" id="lbClose" title="Close">×</button>
@@ -828,6 +879,63 @@
     root.setAttribute('data-theme', next);
     btn.textContent = next === 'dark' ? '☀️' : '🌙';
     localStorage.setItem('theme', next);
+  });
+
+  // ── COMMAND PALETTE (⌘K) ──
+  const cmdkItems = [
+    { ic:'👤', label:'About',                  sub:'§ 01', href:'#about' },
+    { ic:'📝', label:'Statement of Purpose',   sub:'§ 02', href:'#statement' },
+    { ic:'🧰', label:'Working Toolkit',        sub:'§ 03', href:'#toolkit' },
+    { ic:'💼', label:'Experience',             sub:'§ 04', href:'#experience' },
+    { ic:'🎓', label:'Education',              sub:'§ 05', href:'#education' },
+    { ic:'🌾', label:'Featured Research',      sub:'§ 06', href:'#thesis' },
+    { ic:'🖼️', label:'Gallery',               sub:'§ 07', href:'#gallery' },
+    { ic:'📄', label:'Documents',             sub:'§ 08', href:'#documents' },
+    { ic:'🏅', label:'Certifications',         sub:'§ 09', href:'#credentials' },
+    { ic:'⭐', label:'Leadership & Languages', sub:'§ 10', href:'#leadership' },
+    { ic:'👥', label:'References',             sub:'§ 11', href:'#references' },
+    { ic:'✉️', label:'Contact',               sub:'§ 12', href:'#contact' },
+    { ic:'📥', label:'Download CV',            sub:'PDF',  href:'documents/CV.pdf', ext:true },
+    { ic:'📝', label:'Statement of Purpose (PDF)', sub:'PDF', href:'documents/Statement-of-Purpose.pdf', ext:true },
+    { ic:'✉️', label:'Email Henry',           sub:'mail', href:'mailto:mmashen@earth.ac.cr', ext:true },
+    { ic:'💼', label:'LinkedIn',              sub:'link', href:'https://www.linkedin.com/in/henry-mashen-masanja-20248012a/', ext:true },
+    { ic:'💻', label:'GitHub',                sub:'link', href:'https://github.com/masanjahenry22-cyber', ext:true },
+  ];
+  const cmdk = document.getElementById('cmdk');
+  const cmdkInput = document.getElementById('cmdkInput');
+  const cmdkList = document.getElementById('cmdkList');
+  let cmdkActive = 0, cmdkFiltered = cmdkItems.slice();
+
+  function renderCmdk() {
+    const q = cmdkInput.value.trim().toLowerCase();
+    cmdkFiltered = cmdkItems.filter(it => it.label.toLowerCase().includes(q));
+    if (cmdkActive >= cmdkFiltered.length) cmdkActive = 0;
+    cmdkList.innerHTML = cmdkFiltered.length
+      ? cmdkFiltered.map((it,i) =>
+          `<div class="cmdk-item${i===cmdkActive?' active':''}" data-i="${i}"><span class="ic">${it.ic}</span><span>${it.label}</span><span class="sub">${it.sub}</span></div>`
+        ).join('')
+      : '<div class="cmdk-empty">No matches</div>';
+  }
+  function go(it) {
+    closeCmdk();
+    if (!it) return;
+    if (it.ext) { window.open(it.href, it.href.startsWith('mailto') ? '_self' : '_blank'); }
+    else { document.querySelector(it.href)?.scrollIntoView({ behavior:'smooth' }); history.replaceState(null,'',it.href); }
+  }
+  function openCmdk() { cmdk.classList.add('open'); cmdkInput.value=''; cmdkActive=0; renderCmdk(); setTimeout(()=>cmdkInput.focus(),30); document.body.style.overflow='hidden'; }
+  function closeCmdk() { cmdk.classList.remove('open'); document.body.style.overflow=''; }
+
+  document.getElementById('cmdkBtn').addEventListener('click', openCmdk);
+  cmdkInput.addEventListener('input', renderCmdk);
+  cmdk.addEventListener('click', e => { if (e.target === cmdk) closeCmdk(); });
+  cmdkList.addEventListener('click', e => { const el = e.target.closest('.cmdk-item'); if (el) go(cmdkFiltered[+el.dataset.i]); });
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); cmdk.classList.contains('open') ? closeCmdk() : openCmdk(); return; }
+    if (!cmdk.classList.contains('open')) return;
+    if (e.key === 'Escape') closeCmdk();
+    else if (e.key === 'ArrowDown') { e.preventDefault(); cmdkActive = Math.min(cmdkActive+1, cmdkFiltered.length-1); renderCmdk(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); cmdkActive = Math.max(cmdkActive-1, 0); renderCmdk(); }
+    else if (e.key === 'Enter') { e.preventDefault(); go(cmdkFiltered[cmdkActive]); }
   });
 
   // ── ACTIVE NAV LINK ──
