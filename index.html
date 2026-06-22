@@ -155,6 +155,8 @@
     .gallery-tile:hover img{transform:scale(1.06);}
     .gallery-cap{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 0.9rem 0.7rem;font-size:0.76rem;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,0.78));opacity:0;transition:opacity var(--tr);font-weight:500;line-height:1.35;}
     .gallery-tile:hover .gallery-cap{opacity:1;}
+    .gal-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:2rem 0 0.9rem;}
+    .gal-label:first-of-type{margin-top:0.5rem;}
 
     /* LIGHTBOX */
     .lb{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
@@ -547,10 +549,15 @@
   <section class="section reveal" id="gallery">
     <div class="section-header"><span class="section-num">§ 07</span><h2 class="section-title">Field &amp; Research Gallery</h2></div>
     <p class="section-sub">Drone flights, Kernza field campaigns, root imaging, and research presentations. Click any image to enlarge.</p>
-    <div class="gallery-grid" id="gallery">
+    <div class="gal-label">UAV &amp; Field Operations</div>
+    <div class="gallery-grid">
       <div class="gallery-tile lb-trigger" data-full="images/uav-drone-flight.jpeg" data-cap="UAV drone flight for multispectral data capture.">
         <img src="images/uav-drone-flight.jpeg" alt="UAV drone flight" loading="lazy" />
         <div class="gallery-cap">UAV drone flight — multispectral capture</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/preparing-drone-flight.jpeg" data-cap="Preparing the drone for a field flight.">
+        <img src="images/preparing-drone-flight.jpeg" alt="Preparing drone flight" loading="lazy" />
+        <div class="gallery-cap">Preparing the drone for flight</div>
       </div>
       <div class="gallery-tile lb-trigger" data-full="images/gcp-installation.jpeg" data-cap="Installing ground control points (GCPs) for georeferencing.">
         <img src="images/gcp-installation.jpeg" alt="Ground control points installation" loading="lazy" />
@@ -568,6 +575,18 @@
         <img src="images/kernza-harvesting.jpeg" alt="Kernza harvesting" loading="lazy" />
         <div class="gallery-cap">Kernza harvesting</div>
       </div>
+      <div class="gallery-tile lb-trigger" data-full="images/kernza-pix4d.jpeg" data-cap="Kernza image processing and orthomosaic generation in Pix4D.">
+        <img src="images/kernza-pix4d.jpeg" alt="Kernza image processing in Pix4D" loading="lazy" />
+        <div class="gallery-cap">Image processing in Pix4D</div>
+      </div>
+    </div>
+
+    <div class="gal-label">Root Imaging &amp; Lab</div>
+    <div class="gallery-grid">
+      <div class="gallery-tile lb-trigger" data-full="images/minirhizotron-demo.jpeg" data-cap="Demonstrating minirhizotron root imaging in the field.">
+        <img src="images/minirhizotron-demo.jpeg" alt="Minirhizotron demonstration" loading="lazy" />
+        <div class="gallery-cap">Demonstrating minirhizotron imaging</div>
+      </div>
       <div class="gallery-tile lb-trigger" data-full="images/root-imaging-1.jpeg" data-cap="Root imaging using a minirhizotron camera.">
         <img src="images/root-imaging-1.jpeg" alt="Root imaging with minirhizotron camera" loading="lazy" />
         <div class="gallery-cap">Minirhizotron root imaging</div>
@@ -576,21 +595,33 @@
         <img src="images/root-imaging-2.jpeg" alt="Minirhizotron root scanning" loading="lazy" />
         <div class="gallery-cap">Root scanning in the field</div>
       </div>
-      <div class="gallery-tile lb-trigger" data-full="images/kernza-pix4d.jpeg" data-cap="Kernza image processing and orthomosaic generation in Pix4D.">
-        <img src="images/kernza-pix4d.jpeg" alt="Kernza image processing in Pix4D" loading="lazy" />
-        <div class="gallery-cap">Image processing in Pix4D</div>
+    </div>
+
+    <div class="gal-label">Presentations &amp; Seminars</div>
+    <div class="gallery-grid">
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-poster.png" data-cap="My Kernza biomass estimation thesis poster.">
+        <img src="images/thesis-poster.png" alt="Thesis poster" loading="lazy" />
+        <div class="gallery-cap">Thesis poster presentation</div>
       </div>
-      <div class="gallery-tile lb-trigger" data-full="images/mentoring.png" data-cap="Mentoring student field teams at EARTH University.">
-        <img src="images/mentoring.png" alt="Mentoring students" loading="lazy" />
-        <div class="gallery-cap">Mentoring student field teams</div>
+      <div class="gallery-tile lb-trigger" data-full="images/au-seminar-2.jpeg" data-cap="Presenting at the Aarhus University Climate &amp; Water Seminar, Denmark.">
+        <img src="images/au-seminar-2.jpeg" alt="Aarhus University Climate and Water Seminar" loading="lazy" />
+        <div class="gallery-cap">Aarhus University Climate &amp; Water Seminar</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/au-seminar-1.jpeg" data-cap="Aarhus University Climate &amp; Water Seminar talk.">
+        <img src="images/au-seminar-1.jpeg" alt="Climate and Water Seminar talk" loading="lazy" />
+        <div class="gallery-cap">Climate &amp; Water Seminar talk</div>
       </div>
       <div class="gallery-tile lb-trigger" data-full="images/internship-presentation.jpeg" data-cap="Presenting my internship research.">
         <img src="images/internship-presentation.jpeg" alt="Internship presentation" loading="lazy" />
         <div class="gallery-cap">Presenting my internship research</div>
       </div>
-      <div class="gallery-tile lb-trigger" data-full="images/thesis-poster.png" data-cap="My Kernza biomass estimation thesis poster.">
-        <img src="images/thesis-poster.png" alt="Thesis poster" loading="lazy" />
-        <div class="gallery-cap">Thesis poster presentation</div>
+      <div class="gallery-tile lb-trigger" data-full="images/wageningen-seminar.jpeg" data-cap="Visiting Wageningen University &amp; Research, Netherlands.">
+        <img src="images/wageningen-seminar.jpeg" alt="Wageningen University visit" loading="lazy" />
+        <div class="gallery-cap">Wageningen University &amp; Research</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/mentoring.png" data-cap="Mentoring student field teams at EARTH University.">
+        <img src="images/mentoring.png" alt="Mentoring students" loading="lazy" />
+        <div class="gallery-cap">Mentoring student field teams</div>
       </div>
     </div>
   </section>
