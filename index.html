@@ -134,6 +134,9 @@
     .tl-list li{font-size:0.86rem;color:var(--text2);line-height:1.55;padding-left:1.1rem;position:relative;}
     .tl-list li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:0.7rem;top:0.25rem;}
     .tl-list li em{color:var(--text);font-style:italic;}
+    .tl-toggle{background:none;border:none;color:var(--accent);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0.35rem 0;margin-top:0.2rem;font-family:inherit;display:inline-flex;align-items:center;gap:0.3rem;}
+    .tl-toggle:hover{text-decoration:underline;}
+    .tl-summary{font-size:0.86rem;color:var(--text2);line-height:1.55;}
     .tl-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.85rem;}
     .tag{font-size:0.69rem;padding:0.2rem 0.6rem;border-radius:20px;background:var(--accent-bg);color:var(--accent);font-weight:500;border:1px solid var(--border);}
 
@@ -158,11 +161,15 @@
     .gal-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:2rem 0 0.9rem;}
     .gal-label:first-of-type{margin-top:0.5rem;}
     /* horizontal slide gallery (auto-scroll, hover to pause) */
-    .gallery-slider{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x proximity;padding:0.2rem 0.2rem 0.9rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
-    .gallery-slider::-webkit-scrollbar{height:6px;}
-    .gallery-slider::-webkit-scrollbar-track{background:transparent;}
-    .gallery-slider::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
-    .gallery-slider .gallery-tile{flex:0 0 clamp(220px,30vw,280px);scroll-snap-align:start;}
+    .gallery-slider{position:relative;overflow:hidden;padding:0.2rem 0 0.6rem;}
+    .gallery-slider::before,.gallery-slider::after{content:'';position:absolute;top:0;bottom:0;width:56px;z-index:2;pointer-events:none;}
+    .gallery-slider::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
+    .gallery-slider::after{right:0;background:linear-gradient(270deg,var(--bg),transparent);}
+    .gallery-track{display:flex;gap:1rem;width:max-content;animation:gmarquee linear infinite;will-change:transform;}
+    .gallery-slider:hover .gallery-track,.gallery-slider:focus-within .gallery-track{animation-play-state:paused;}
+    .gallery-track .gallery-tile{flex:0 0 clamp(210px,26vw,250px);}
+    @keyframes gmarquee{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--shift,50%)))}}
+    @media (prefers-reduced-motion:reduce){.gallery-track{animation:none;}.gallery-slider{overflow-x:auto;}}
 
     /* LIGHTBOX */
     .lb{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
@@ -206,7 +213,9 @@
     .lang-fill{height:100%;background:var(--accent);border-radius:4px;}
 
     /* REFERENCES */
-    .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+    .refs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+    @media (max-width:900px){.refs-grid{grid-template-columns:1fr 1fr;}}
+    @media (max-width:560px){.refs-grid{grid-template-columns:1fr;}}
     .ref-card{padding:1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all var(--tr);display:flex;flex-direction:column;}
     .ref-card:hover{border-color:var(--accent);}
     .ref-badge{align-self:flex-start;background:var(--accent-bg);color:var(--accent);border:1px solid var(--border);font-size:0.64rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:0.35rem 0.6rem;border-radius:6px;margin-bottom:1rem;line-height:1.4;}
@@ -793,6 +802,15 @@
         <a class="ref-email" href="mailto:eusun.han@agro.au.dk">✉ eusun.han@agro.au.dk</a>
       </div>
       <div class="ref-card">
+        <span class="ref-badge">Thesis Assessor · Aarhus</span>
+        <div class="ref-photo"><img src="images/refs/yuma-ikeda.png" alt="Yuma Ikeda" /></div>
+        <div class="ref-name">Yuma Ikeda, MSc</div>
+        <div class="ref-title">PhD Researcher — Plant Phenotyping, Phenomic Prediction, Crop Physiology</div>
+        <div class="ref-affil">Aarhus University · Denmark</div>
+        <div class="ref-blurb">Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.</div>
+        <a class="ref-email" href="mailto:yuik@agro.au.dk">✉ yuik@agro.au.dk</a>
+      </div>
+      <div class="ref-card">
         <span class="ref-badge">Day-to-Day Internship Supervisor</span>
         <div class="ref-photo"><img src="images/refs/alexa-peterson.jpg" alt="Alexa Nicole Peterson" /></div>
         <div class="ref-name">Alexa Nicole Peterson, MSc</div>
@@ -809,15 +827,6 @@
         <div class="ref-affil">EARTH University · Costa Rica</div>
         <div class="ref-blurb">Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.</div>
         <a class="ref-email" href="mailto:vmorales@earth.ac.cr">✉ vmorales@earth.ac.cr</a>
-      </div>
-      <div class="ref-card">
-        <span class="ref-badge">Thesis Assessor · Aarhus</span>
-        <div class="ref-photo"><img src="images/refs/yuma-ikeda.png" alt="Yuma Ikeda" /></div>
-        <div class="ref-name">Yuma Ikeda, MSc</div>
-        <div class="ref-title">PhD Researcher — Plant Phenotyping, Phenomic Prediction, Crop Physiology</div>
-        <div class="ref-affil">Aarhus University · Denmark</div>
-        <div class="ref-blurb">Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.</div>
-        <a class="ref-email" href="mailto:yuik@agro.au.dk">✉ yuik@agro.au.dk</a>
       </div>
     </div>
   </section>
@@ -959,18 +968,40 @@
   }, { threshold: 0.3 });
   document.querySelectorAll('.section').forEach(s => navObserver.observe(s));
 
-  // ── AUTO-SCROLLING SLIDE GALLERIES (hover to pause) ──
+  // ── MARQUEE SLIDE GALLERIES (continuous movement, hover to pause) ──
   document.querySelectorAll('.gallery-slider').forEach(s => {
-    let paused = false;
-    s.addEventListener('mouseenter', () => paused = true);
-    s.addEventListener('mouseleave', () => paused = false);
-    s.addEventListener('touchstart', () => paused = true, { passive: true });
-    s.addEventListener('focusin', () => paused = true);
-    setInterval(() => {
-      if (paused || s.offsetParent === null) return;
-      if (s.scrollLeft + s.clientWidth >= s.scrollWidth - 1) s.scrollLeft = 0;
-      else s.scrollLeft += 1;
-    }, 25);
+    const track = document.createElement('div');
+    track.className = 'gallery-track';
+    while (s.firstChild) track.appendChild(s.firstChild);
+    const originals = Array.from(track.children);
+    originals.forEach(t => {
+      const c = t.cloneNode(true);
+      c.dataset.clone = '1';
+      c.setAttribute('aria-hidden', 'true');
+      track.appendChild(c);
+    });
+    s.appendChild(track);
+    const shift = (track.scrollWidth + 16) / 2;       // one set width + one gap (seamless loop)
+    track.style.setProperty('--shift', shift + 'px');
+    track.style.animationDuration = Math.max(22, originals.length * 4) + 's';
+  });
+
+  // ── COLLAPSIBLE EXPERIENCE / EDUCATION (compact, not a CV wall of text) ──
+  document.querySelectorAll('#experience .tl-item, #education .tl-item').forEach(item => {
+    const list = item.querySelector('.tl-list');
+    if (!list) return;
+    list.style.display = 'none';
+    const btn = document.createElement('button');
+    btn.className = 'tl-toggle';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.textContent = '▾ Details';
+    btn.addEventListener('click', () => {
+      const open = list.style.display !== 'none';
+      list.style.display = open ? 'none' : 'flex';
+      btn.textContent = open ? '▾ Details' : '▴ Hide';
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    list.parentNode.insertBefore(btn, list);
   });
 
   // ── REVEAL ON SCROLL ──
@@ -980,7 +1011,7 @@
   document.querySelectorAll('.reveal').forEach(el => revObserver.observe(el));
 
   // ── LIGHTBOX ──
-  const triggers = Array.from(document.querySelectorAll('.lb-trigger'));
+  const triggers = Array.from(document.querySelectorAll('.lb-trigger:not([data-clone])'));
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
@@ -999,6 +1030,11 @@
   function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
 
   triggers.forEach((t, i) => t.addEventListener('click', () => openLb(i)));
+  // cloned (marquee duplicate) tiles open the matching original
+  document.querySelectorAll('.lb-trigger[data-clone]').forEach(c => c.addEventListener('click', () => {
+    const i = triggers.findIndex(t => t.dataset.full === c.dataset.full);
+    openLb(i >= 0 ? i : 0);
+  }));
   document.getElementById('lbClose').addEventListener('click', closeLb);
   document.getElementById('lbPrev').addEventListener('click', () => show(idx - 1));
   document.getElementById('lbNext').addEventListener('click', () => show(idx + 1));
