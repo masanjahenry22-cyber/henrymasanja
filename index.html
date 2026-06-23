@@ -207,15 +207,16 @@
 
     /* REFERENCES */
     .refs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
-    .ref-card{padding:1.3rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all var(--tr);}
+    .ref-card{padding:1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all var(--tr);display:flex;flex-direction:column;}
     .ref-card:hover{border-color:var(--accent);}
-    .ref-head{display:flex;gap:0.85rem;align-items:center;margin-bottom:0.85rem;}
-    .ref-avatar{width:52px;height:52px;border-radius:50%;flex-shrink:0;overflow:hidden;background:var(--accent);color:#fff;font-weight:700;font-size:0.95rem;display:flex;align-items:center;justify-content:center;}
-    .ref-avatar img{width:100%;height:100%;object-fit:cover;}
-    .ref-name{font-size:0.95rem;font-weight:700;margin-bottom:0.15rem;}
-    .ref-role{font-size:0.78rem;color:var(--text2);line-height:1.5;margin-bottom:0.8rem;}
-    .ref-inst{color:var(--accent);font-weight:600;}
-    .ref-email{font-size:0.78rem;color:var(--accent);display:inline-flex;align-items:center;gap:0.35rem;}
+    .ref-badge{align-self:flex-start;background:var(--accent-bg);color:var(--accent);border:1px solid var(--border);font-size:0.64rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:0.35rem 0.6rem;border-radius:6px;margin-bottom:1rem;line-height:1.4;}
+    .ref-photo{width:64px;height:64px;border-radius:50%;overflow:hidden;background:var(--accent);color:#fff;font-weight:700;font-size:1.05rem;display:flex;align-items:center;justify-content:center;margin-bottom:0.8rem;}
+    .ref-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+    .ref-name{font-size:1.05rem;font-weight:800;margin-bottom:0.2rem;letter-spacing:-0.01em;}
+    .ref-title{font-style:italic;font-size:0.82rem;color:var(--text2);line-height:1.45;margin-bottom:0.45rem;}
+    .ref-affil{font-size:0.74rem;color:var(--text3);letter-spacing:0.02em;margin-bottom:0.85rem;}
+    .ref-blurb{font-size:0.8rem;color:var(--text2);line-height:1.55;background:var(--accent-bg);border-radius:7px;padding:0.65rem 0.75rem;margin-bottom:0.9rem;}
+    .ref-email{font-size:0.78rem;color:var(--accent);display:inline-flex;align-items:center;gap:0.35rem;margin-top:auto;}
     .ref-email:hover{text-decoration:underline;}
 
     /* CONTACT */
@@ -783,36 +784,40 @@
     <div class="section-header"><span class="section-num">§ 11</span><h2 class="section-title">References</h2></div>
     <div class="refs-grid">
       <div class="ref-card">
-        <div class="ref-head">
-          <div class="ref-avatar"><img src="images/refs/eusun-han.png" alt="Dr. Eusun Han" /></div>
-          <div class="ref-name">Dr. Eusun Han, PhD</div>
-        </div>
-        <div class="ref-role">Associate Professor, Sustainable Perennial Cropping Systems<br><span class="ref-inst">Aarhus University, Denmark</span><br>Supervised my 2025 research internship.</div>
+        <span class="ref-badge">Internship Supervisor · Aarhus 2025</span>
+        <div class="ref-photo"><img src="images/refs/eusun-han.png" alt="Eusun Han" /></div>
+        <div class="ref-name">Eusun Han, PhD</div>
+        <div class="ref-title">Associate Professor, Sustainable Perennial Cropping Systems</div>
+        <div class="ref-affil">Aarhus University · Denmark</div>
+        <div class="ref-blurb">Supervised my 2025 research internship and hosted my Kernza dataset collection within his lab. Also an advisor and one of my three graduation-thesis assessors.</div>
         <a class="ref-email" href="mailto:eusun.han@agro.au.dk">✉ eusun.han@agro.au.dk</a>
       </div>
       <div class="ref-card">
-        <div class="ref-head">
-          <div class="ref-avatar">YI</div>
-          <div class="ref-name">Yuma Ikeda, MSc</div>
-        </div>
-        <div class="ref-role">PhD Student — Plant Phenotyping, Phenomic Prediction, Crop Physiology<br><span class="ref-inst">Aarhus University, Denmark</span><br>Research collaborator on the Kernza project.</div>
-        <a class="ref-email" href="mailto:yuik@agro.au.dk">✉ yuik@agro.au.dk</a>
-      </div>
-      <div class="ref-card">
-        <div class="ref-head">
-          <div class="ref-avatar"><img src="images/refs/alexa-peterson.jpg" alt="Alexa Nicole Peterson" /></div>
-          <div class="ref-name">Alexa Nicole Peterson, MSc</div>
-        </div>
-        <div class="ref-role">PhD Researcher — Perennial Grains, Sustainable Agriculture, Plant Breeding<br><span class="ref-inst">Aarhus University, Denmark</span></div>
+        <span class="ref-badge">Day-to-Day Internship Supervisor</span>
+        <div class="ref-photo"><img src="images/refs/alexa-peterson.jpg" alt="Alexa Nicole Peterson" /></div>
+        <div class="ref-name">Alexa Nicole Peterson, MSc</div>
+        <div class="ref-title">PhD Researcher — Perennial Grains, Sustainable Agriculture, Plant Breeding</div>
+        <div class="ref-affil">Aarhus University · Denmark</div>
+        <div class="ref-blurb">Supervised my day-to-day internship activities at Aarhus — overseeing field data collection and lab work on the Kernza perennial-grain trials.</div>
         <a class="ref-email" href="mailto:alexa.peterson@agro.au.dk">✉ alexa.peterson@agro.au.dk</a>
       </div>
       <div class="ref-card">
-        <div class="ref-head">
-          <div class="ref-avatar">VM</div>
-          <div class="ref-name">Victor Hugo Morales Peña, PhD</div>
-        </div>
-        <div class="ref-role">Professor — Tropical Forestry, Agroforestry, Remote Sensing<br><span class="ref-inst">EARTH University, Costa Rica</span></div>
+        <span class="ref-badge">Graduation Thesis Supervisor</span>
+        <div class="ref-photo"><img src="images/refs/victor-morales.png" alt="Víctor Hugo Morales Peña" /></div>
+        <div class="ref-name">Víctor Hugo Morales Peña, PhD</div>
+        <div class="ref-title">Professor of Tropical Forestry · Director, Geomatics &amp; Remote Sensing Center</div>
+        <div class="ref-affil">EARTH University · Costa Rica</div>
+        <div class="ref-blurb">Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.</div>
         <a class="ref-email" href="mailto:vmorales@earth.ac.cr">✉ vmorales@earth.ac.cr</a>
+      </div>
+      <div class="ref-card">
+        <span class="ref-badge">Thesis Assessor · Aarhus</span>
+        <div class="ref-photo"><img src="images/refs/yuma-ikeda.png" alt="Yuma Ikeda" /></div>
+        <div class="ref-name">Yuma Ikeda, MSc</div>
+        <div class="ref-title">PhD Researcher — Plant Phenotyping, Phenomic Prediction, Crop Physiology</div>
+        <div class="ref-affil">Aarhus University · Denmark</div>
+        <div class="ref-blurb">Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.</div>
+        <a class="ref-email" href="mailto:yuik@agro.au.dk">✉ yuik@agro.au.dk</a>
       </div>
     </div>
   </section>
