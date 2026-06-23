@@ -266,6 +266,10 @@
     @media (max-width:760px){.pipeline{grid-template-columns:1fr 1fr;}.pstep:not(:last-child)::after{display:none;}}
     @media (max-width:420px){.pipeline{grid-template-columns:1fr;}}
 
+    /* language selector */
+    .lang-select{height:32px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:0.74rem;font-weight:600;padding:0 0.4rem;cursor:pointer;font-family:inherit;transition:all var(--tr);}
+    .lang-select:hover{color:var(--text);background:var(--bg2);}
+
     footer{border-top:1px solid var(--border);padding:1.6rem 2rem;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--text3);flex-wrap:wrap;gap:0.5rem;}
 
     /* RESPONSIVE */
@@ -297,6 +301,12 @@
       <li><a href="#contact">§ 12 Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:0.5rem;">
+      <select class="lang-select" id="langSelect" title="Language" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+        <option value="fr">FR</option>
+        <option value="pt">PT</option>
+      </select>
       <button class="kbd-btn" id="cmdkBtn" title="Quick search (Ctrl/⌘ K)"><span>Search</span> <kbd>⌘K</kbd></button>
       <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
     </div>
@@ -308,7 +318,7 @@
   <div class="hero-left">
     <p class="hero-label">Agricultural Sciences &amp; Engineering · EARTH University</p>
     <h1>Henry Mashen<br>Masanja</h1>
-    <p class="hero-desc">
+    <p class="hero-desc" data-i18n="heroDesc">
       Agricultural Sciences professional specializing in <strong>precision &amp; digital agriculture</strong>,
       remote sensing, and geospatial analysis. I build data-driven tools — from UAV imagery to machine
       learning models — to advance sustainable food systems and global agricultural resilience.
@@ -349,9 +359,9 @@
     <div class="section-header"><span class="section-num">§ 01</span><h2 class="section-title">About</h2></div>
     <div class="about-grid">
       <div class="about-text">
-        <p>I am a highly motivated final-year <strong>Agricultural Sciences &amp; Engineering</strong> student at EARTH University, Costa Rica, specializing in precision and digital agriculture, remote sensing, and geospatial analysis.</p>
-        <p>I am experienced in <strong>UAV data acquisition and processing</strong> using Pix4D, Agisoft Metashape, QGIS, and Google Earth Engine, and proficient in <strong>Python and R</strong> for spatial modeling, statistical analysis, and machine learning. My work focuses on developing data-driven tools for biomass estimation and precision farm management.</p>
-        <p>I am passionate about applying <strong>geospatial intelligence and AgriTech innovation</strong> to advance sustainable food systems and global agricultural resilience — bridging field-scale agronomy with modern data science.</p>
+        <p data-i18n="about1">I am a highly motivated final-year <strong>Agricultural Sciences &amp; Engineering</strong> student at EARTH University, Costa Rica, specializing in precision and digital agriculture, remote sensing, and geospatial analysis.</p>
+        <p data-i18n="about2">I am experienced in <strong>UAV data acquisition and processing</strong> using Pix4D, Agisoft Metashape, QGIS, and Google Earth Engine, and proficient in <strong>Python and R</strong> for spatial modeling, statistical analysis, and machine learning. My work focuses on developing data-driven tools for biomass estimation and precision farm management.</p>
+        <p data-i18n="about3">I am passionate about applying <strong>geospatial intelligence and AgriTech innovation</strong> to advance sustainable food systems and global agricultural resilience — bridging field-scale agronomy with modern data science.</p>
       </div>
       <div class="about-aside">
         <div class="info-row"><span class="info-icon">🎓</span><div class="info-content"><strong>EARTH University</strong><span>BSc Agricultural Sciences · GPA 90/100</span></div></div>
@@ -366,7 +376,7 @@
   <section class="section reveal" id="statement">
     <div class="section-header"><span class="section-num">§ 02</span><h2 class="section-title">Statement of Purpose</h2></div>
     <div class="sop-text">
-      <p>My full Statement of Purpose — covering my research interests across <strong>data science, agricultural systems, and food quality</strong>, my technical background, and my long-term goals — is available as a PDF.</p>
+      <p data-i18n="sopLead">My full Statement of Purpose — covering my research interests across <strong>data science, agricultural systems, and food quality</strong>, my technical background, and my long-term goals — is available as a PDF.</p>
       <a class="btn btn-primary" href="documents/Statement-of-Purpose.pdf" target="_blank">📄 Read my Statement of Purpose (PDF)</a>
     </div>
 
@@ -1045,6 +1055,166 @@
     if (e.key === 'ArrowLeft') show(idx - 1);
     if (e.key === 'ArrowRight') show(idx + 1);
   });
+
+  // ════════ I18N — EN / ES / FR / PT ════════
+  const I18N = {
+    es: {
+      t: {
+        "§ 01 About":"§ 01 Perfil","§ 02 Statement":"§ 02 Carta","§ 04 Experience":"§ 04 Experiencia","§ 06 Thesis":"§ 06 Tesis","§ 07 Gallery":"§ 07 Galería","§ 08 Documents":"§ 08 Documentos","§ 12 Contact":"§ 12 Contacto",
+        "Agricultural Sciences & Engineering · EARTH University":"Ciencias e Ingeniería Agrícola · EARTH University",
+        "Cumulative GPA":"Promedio acumulado","Languages":"Idiomas","EU Drone License":"Licencia de dron UE","Countries worked":"Países de trabajo",
+        "BSc Agricultural Sciences & Engineering":"Lic. en Ciencias e Ingeniería Agrícola",
+        "✉ Contact Me":"✉ Contáctame","📄 Statement of Purpose":"📄 Carta de Motivación","📄 All Documents":"📄 Todos los Documentos","📄 Read my Statement of Purpose (PDF)":"📄 Leer mi Carta de Motivación (PDF)","💻 Analysis code":"💻 Código de análisis",
+        "About":"Perfil","Statement of Purpose":"Carta de Motivación","Working Toolkit":"Herramientas de Trabajo","Work & Research Experience":"Experiencia Laboral y de Investigación","Education":"Formación Académica","Featured Research":"Investigación Destacada","Field & Research Gallery":"Galería de Campo e Investigación","Documents & Downloads":"Documentos y Descargas","Certifications & Conferences":"Certificaciones y Congresos","Leadership & Languages":"Liderazgo e Idiomas","References":"Referencias","Contact":"Contacto",
+        "Drone flights, Kernza campaigns, root imaging, and presentations — organized by theme. Hover to pause · click to enlarge.":"Vuelos con dron, campañas de Kernza, imágenes de raíces y presentaciones — organizadas por tema. Pasa el cursor para pausar · haz clic para ampliar.",
+        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.":"El CV, la carta de motivación y los certificados se pueden descargar libremente. 🔒 El expediente académico es privado — solicita acceso por correo y te lo compartiré directamente.",
+        "UAV & Geospatial":"Drones y Geoespacial","Programming & Data Science":"Programación y Ciencia de Datos","Sensing & Hardware":"Sensores y Hardware",
+        "Open to Opportunities":"Abierto a Oportunidades","MSc Positions":"Plazas de Maestría","PhD Positions":"Plazas de Doctorado","Industry & Work":"Industria y Empleo",
+        "Seeking funded MSc opportunities in data-driven agricultural and food systems, remote sensing, or food quality & nutrition.":"Busco oportunidades de maestría financiadas en sistemas agrícolas y alimentarios basados en datos, teledetección o calidad y nutrición de los alimentos.",
+        "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Abierto a proyectos de doctorado que unan aprendizaje automático, teledetección y sistemas de cultivos/alimentos con impacto real.",
+        "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponible para puestos en AgriTech, agricultura de precisión, drones/teledetección y ciencia de datos, además de colaboraciones de investigación.",
+        "Available":"Disponible","Open to opportunities — MSc · PhD · Industry / Work":"Disponible para oportunidades — Maestría · Doctorado · Industria / Empleo",
+        "BSc Thesis · In Progress":"Tesis de Licenciatura · En curso","Methodology":"Metodología",
+        "UAV & Field Operations":"Drones y Operaciones de Campo","Root Imaging & Lab":"Imágenes de Raíces y Laboratorio","Presentations & Seminars":"Presentaciones y Seminarios","Topography & Survey Leadership · EARTH University":"Liderazgo en Topografía y Levantamientos · EARTH University",
+        "Academic Transcript":"Expediente Académico","Enrollment Certification":"Certificado de Matrícula","A1/A3 Drone Pilot Licence":"Licencia de Piloto de Dron A1/A3",
+        "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicita acceso por correo","EARTH University Registrar":"Registro de EARTH University","European certificate":"Certificado europeo","Fundamentals of Remote Sensing":"Fundamentos de Teledetección","Climate University certificate":"Certificado de Climate University",
+        "Certifications":"Certificaciones","Conferences":"Congresos","A1/A3 European Drone License":"Licencia Europea de Dron A1/A3","NASA ARSET — Fundamentals of Remote Sensing":"NASA ARSET — Fundamentos de Teledetección","Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3":"Erasmus Mundus + Intercambio Virtual CLUVEX Climate University 3","iClimate — Aarhus University Annual Conference":"iClimate — Congreso Anual de la Universidad de Aarhus",
+        "Leadership & Volunteering":"Liderazgo y Voluntariado","Student Government Representative":"Representante del Gobierno Estudiantil","Community Outreach Volunteer":"Voluntario de Extensión Comunitaria","Volunteer":"Voluntario",
+        "English":"Inglés","Spanish":"Español","Advanced":"Avanzado","Native":"Nativo",
+        "Internship Supervisor · Aarhus 2025":"Supervisor de Pasantía · Aarhus 2025","Thesis Assessor · Aarhus":"Evaluador de Tesis · Aarhus","Day-to-Day Internship Supervisor":"Supervisor Diario de la Pasantía","Graduation Thesis Supervisor":"Director de Tesis de Grado",
+        "Associate Professor, Sustainable Perennial Cropping Systems":"Profesor Asociado, Sistemas Sostenibles de Cultivos Perennes","PhD Researcher — Plant Phenotyping, Phenomic Prediction, Crop Physiology":"Investigador Doctoral — Fenotipado Vegetal, Predicción Fenómica, Fisiología de Cultivos","PhD Researcher — Perennial Grains, Sustainable Agriculture, Plant Breeding":"Investigadora Doctoral — Granos Perennes, Agricultura Sostenible, Mejoramiento Vegetal","Professor of Tropical Forestry · Director, Geomatics & Remote Sensing Center":"Profesor de Silvicultura Tropical · Director, Centro de Geomática y Teledetección",
+        "Supervised my 2025 research internship and hosted my Kernza dataset collection within his lab. Also an advisor and one of my three graduation-thesis assessors.":"Supervisó mi pasantía de investigación de 2025 y acogió la recolección de mi conjunto de datos de Kernza en su laboratorio. También es asesor y uno de mis tres evaluadores de tesis de grado.",
+        "Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.":"Colaborador de investigación en el proyecto de grano perenne Kernza en Aarhus y uno de mis tres evaluadores de tesis de grado.",
+        "Supervised my day-to-day internship activities at Aarhus — overseeing field data collection and lab work on the Kernza perennial-grain trials.":"Supervisó mis actividades diarias de pasantía en Aarhus — coordinando la recolección de datos de campo y el trabajo de laboratorio en los ensayos del grano perenne Kernza.",
+        "Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.":"Director de mi tesis de grado en EARTH University y uno de mis tres evaluadores. Orienta mi trabajo en teledetección y análisis geoespacial.",
+        "Phone / WhatsApp":"Teléfono / WhatsApp",
+        "Agricultural Sciences & Engineering · Precision & Digital Agriculture":"Ciencias e Ingeniería Agrícola · Agricultura de Precisión y Digital",
+        "Jump to a section or action…":"Ir a una sección o acción…"
+      },
+      html: {
+        heroDesc:"Profesional de Ciencias Agrícolas especializado en <strong>agricultura de precisión y digital</strong>, teledetección y análisis geoespacial. Desarrollo herramientas basadas en datos — desde imágenes de drones hasta modelos de aprendizaje automático — para impulsar sistemas alimentarios sostenibles y la resiliencia agrícola mundial.",
+        about1:"Soy un estudiante de último año de <strong>Ciencias e Ingeniería Agrícola</strong> en EARTH University, Costa Rica, altamente motivado y especializado en agricultura de precisión y digital, teledetección y análisis geoespacial.",
+        about2:"Tengo experiencia en <strong>adquisición y procesamiento de datos con drones</strong> usando Pix4D, Agisoft Metashape, QGIS y Google Earth Engine, y dominio de <strong>Python y R</strong> para modelado espacial, análisis estadístico y aprendizaje automático. Mi trabajo se centra en desarrollar herramientas basadas en datos para la estimación de biomasa y la gestión agrícola de precisión.",
+        about3:"Me apasiona aplicar <strong>la inteligencia geoespacial y la innovación AgriTech</strong> para impulsar sistemas alimentarios sostenibles y la resiliencia agrícola mundial — uniendo la agronomía de campo con la ciencia de datos moderna.",
+        sopLead:"Mi Carta de Motivación completa — que abarca mis intereses de investigación en <strong>ciencia de datos, sistemas agrícolas y calidad de los alimentos</strong>, mi formación técnica y mis objetivos a largo plazo — está disponible en PDF."
+      }
+    },
+    fr: {
+      t: {
+        "§ 01 About":"§ 01 Profil","§ 02 Statement":"§ 02 Lettre","§ 04 Experience":"§ 04 Expérience","§ 06 Thesis":"§ 06 Thèse","§ 07 Gallery":"§ 07 Galerie","§ 08 Documents":"§ 08 Documents","§ 12 Contact":"§ 12 Contact",
+        "Agricultural Sciences & Engineering · EARTH University":"Sciences et Ingénierie Agricoles · EARTH University",
+        "Cumulative GPA":"Moyenne générale","Languages":"Langues","EU Drone License":"Licence de drone UE","Countries worked":"Pays d'activité",
+        "BSc Agricultural Sciences & Engineering":"Licence en Sciences et Ingénierie Agricoles",
+        "✉ Contact Me":"✉ Me contacter","📄 Statement of Purpose":"📄 Lettre de Motivation","📄 All Documents":"📄 Tous les Documents","📄 Read my Statement of Purpose (PDF)":"📄 Lire ma Lettre de Motivation (PDF)","💻 Analysis code":"💻 Code d'analyse",
+        "About":"Profil","Statement of Purpose":"Lettre de Motivation","Working Toolkit":"Outils de Travail","Work & Research Experience":"Expérience Professionnelle et de Recherche","Education":"Formation","Featured Research":"Recherche en Vedette","Field & Research Gallery":"Galerie de Terrain et de Recherche","Documents & Downloads":"Documents et Téléchargements","Certifications & Conferences":"Certifications et Conférences","Leadership & Languages":"Leadership et Langues","References":"Références","Contact":"Contact",
+        "Drone flights, Kernza campaigns, root imaging, and presentations — organized by theme. Hover to pause · click to enlarge.":"Vols de drone, campagnes Kernza, imagerie racinaire et présentations — organisés par thème. Survolez pour mettre en pause · cliquez pour agrandir.",
+        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.":"Le CV, la lettre de motivation et les certificats sont librement téléchargeables. 🔒 Le relevé de notes est privé — demandez l'accès par e-mail et je le partagerai directement.",
+        "UAV & Geospatial":"Drones et Géospatial","Programming & Data Science":"Programmation et Science des Données","Sensing & Hardware":"Capteurs et Matériel",
+        "Open to Opportunities":"Ouvert aux Opportunités","MSc Positions":"Postes de Master","PhD Positions":"Postes de Doctorat","Industry & Work":"Industrie et Emploi",
+        "Seeking funded MSc opportunities in data-driven agricultural and food systems, remote sensing, or food quality & nutrition.":"Je recherche des opportunités de master financées en systèmes agricoles et alimentaires axés sur les données, télédétection, ou qualité et nutrition des aliments.",
+        "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Ouvert à des projets de doctorat reliant apprentissage automatique, télédétection et systèmes de cultures/aliments à impact réel.",
+        "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponible pour des postes en AgriTech, agriculture de précision, drones/télédétection et science des données, ainsi que des collaborations de recherche.",
+        "Available":"Disponible","Open to opportunities — MSc · PhD · Industry / Work":"Ouvert aux opportunités — Master · Doctorat · Industrie / Emploi",
+        "BSc Thesis · In Progress":"Mémoire de Licence · En cours","Methodology":"Méthodologie",
+        "UAV & Field Operations":"Drones et Opérations de Terrain","Root Imaging & Lab":"Imagerie Racinaire et Laboratoire","Presentations & Seminars":"Présentations et Séminaires","Topography & Survey Leadership · EARTH University":"Leadership en Topographie et Levés · EARTH University",
+        "Academic Transcript":"Relevé de Notes","Enrollment Certification":"Certificat de Scolarité","A1/A3 Drone Pilot Licence":"Licence de Pilote de Drone A1/A3",
+        "Full CV — PDF":"CV complet — PDF","Private — request access by email":"Privé — demande d'accès par e-mail","EARTH University Registrar":"Secrétariat d'EARTH University","European certificate":"Certificat européen","Fundamentals of Remote Sensing":"Fondamentaux de la Télédétection","Climate University certificate":"Certificat Climate University",
+        "Certifications":"Certifications","Conferences":"Conférences","A1/A3 European Drone License":"Licence Européenne de Drone A1/A3","NASA ARSET — Fundamentals of Remote Sensing":"NASA ARSET — Fondamentaux de la Télédétection","Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3":"Erasmus Mundus + Échange Virtuel CLUVEX Climate University 3","iClimate — Aarhus University Annual Conference":"iClimate — Conférence Annuelle de l'Université d'Aarhus",
+        "Leadership & Volunteering":"Leadership et Bénévolat","Student Government Representative":"Représentant du Gouvernement Étudiant","Community Outreach Volunteer":"Bénévole d'Action Communautaire","Volunteer":"Bénévole",
+        "English":"Anglais","Spanish":"Espagnol","Advanced":"Avancé","Native":"Natif",
+        "Internship Supervisor · Aarhus 2025":"Superviseur de Stage · Aarhus 2025","Thesis Assessor · Aarhus":"Évaluateur de Mémoire · Aarhus","Day-to-Day Internship Supervisor":"Superviseure Quotidienne de Stage","Graduation Thesis Supervisor":"Directeur de Mémoire de Fin d'Études",
+        "Associate Professor, Sustainable Perennial Cropping Systems":"Professeur Associé, Systèmes de Cultures Pérennes Durables","PhD Researcher — Plant Phenotyping, Phenomic Prediction, Crop Physiology":"Chercheur Doctoral — Phénotypage Végétal, Prédiction Phénomique, Physiologie des Cultures","PhD Researcher — Perennial Grains, Sustainable Agriculture, Plant Breeding":"Chercheuse Doctorale — Céréales Pérennes, Agriculture Durable, Amélioration des Plantes","Professor of Tropical Forestry · Director, Geomatics & Remote Sensing Center":"Professeur de Foresterie Tropicale · Directeur, Centre de Géomatique et de Télédétection",
+        "Supervised my 2025 research internship and hosted my Kernza dataset collection within his lab. Also an advisor and one of my three graduation-thesis assessors.":"A supervisé mon stage de recherche de 2025 et a accueilli la collecte de mon jeu de données Kernza dans son laboratoire. Il est aussi conseiller et l'un de mes trois évaluateurs de mémoire.",
+        "Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.":"Collaborateur de recherche sur le projet de céréale pérenne Kernza à Aarhus et l'un de mes trois évaluateurs de mémoire.",
+        "Supervised my day-to-day internship activities at Aarhus — overseeing field data collection and lab work on the Kernza perennial-grain trials.":"A supervisé mes activités quotidiennes de stage à Aarhus — coordonnant la collecte de données de terrain et le travail de laboratoire sur les essais de la céréale pérenne Kernza.",
+        "Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.":"Directeur de mon mémoire de fin d'études à EARTH University et l'un de mes trois évaluateurs. Encadre mon travail en télédétection et analyse géospatiale.",
+        "Phone / WhatsApp":"Téléphone / WhatsApp",
+        "Agricultural Sciences & Engineering · Precision & Digital Agriculture":"Sciences et Ingénierie Agricoles · Agriculture de Précision et Numérique",
+        "Jump to a section or action…":"Aller à une section ou une action…"
+      },
+      html: {
+        heroDesc:"Professionnel des Sciences Agricoles spécialisé en <strong>agriculture de précision et numérique</strong>, télédétection et analyse géospatiale. Je conçois des outils axés sur les données — de l'imagerie par drone aux modèles d'apprentissage automatique — pour faire progresser des systèmes alimentaires durables et la résilience agricole mondiale.",
+        about1:"Je suis un étudiant de dernière année en <strong>Sciences et Ingénierie Agricoles</strong> à EARTH University, au Costa Rica, très motivé et spécialisé en agriculture de précision et numérique, télédétection et analyse géospatiale.",
+        about2:"J'ai de l'expérience dans <strong>l'acquisition et le traitement de données par drone</strong> avec Pix4D, Agisoft Metashape, QGIS et Google Earth Engine, et je maîtrise <strong>Python et R</strong> pour la modélisation spatiale, l'analyse statistique et l'apprentissage automatique. Mon travail porte sur le développement d'outils axés sur les données pour l'estimation de la biomasse et la gestion agricole de précision.",
+        about3:"Je suis passionné par l'application de <strong>l'intelligence géospatiale et de l'innovation AgriTech</strong> pour faire progresser des systèmes alimentaires durables et la résilience agricole mondiale — en reliant l'agronomie de terrain à la science des données moderne.",
+        sopLead:"Ma Lettre de Motivation complète — couvrant mes intérêts de recherche en <strong>science des données, systèmes agricoles et qualité des aliments</strong>, ma formation technique et mes objectifs à long terme — est disponible en PDF."
+      }
+    },
+    pt: {
+      t: {
+        "§ 01 About":"§ 01 Perfil","§ 02 Statement":"§ 02 Carta","§ 04 Experience":"§ 04 Experiência","§ 06 Thesis":"§ 06 Tese","§ 07 Gallery":"§ 07 Galeria","§ 08 Documents":"§ 08 Documentos","§ 12 Contact":"§ 12 Contato",
+        "Agricultural Sciences & Engineering · EARTH University":"Ciências e Engenharia Agrícola · EARTH University",
+        "Cumulative GPA":"Média acumulada","Languages":"Idiomas","EU Drone License":"Licença de drone UE","Countries worked":"Países onde atuei",
+        "BSc Agricultural Sciences & Engineering":"Bacharel em Ciências e Engenharia Agrícola",
+        "✉ Contact Me":"✉ Fale Comigo","📄 Statement of Purpose":"📄 Carta de Motivação","📄 All Documents":"📄 Todos os Documentos","📄 Read my Statement of Purpose (PDF)":"📄 Ler minha Carta de Motivação (PDF)","💻 Analysis code":"💻 Código de análise",
+        "About":"Perfil","Statement of Purpose":"Carta de Motivação","Working Toolkit":"Ferramentas de Trabalho","Work & Research Experience":"Experiência Profissional e de Pesquisa","Education":"Formação Acadêmica","Featured Research":"Pesquisa em Destaque","Field & Research Gallery":"Galeria de Campo e Pesquisa","Documents & Downloads":"Documentos e Downloads","Certifications & Conferences":"Certificações e Conferências","Leadership & Languages":"Liderança e Idiomas","References":"Referências","Contact":"Contato",
+        "Drone flights, Kernza campaigns, root imaging, and presentations — organized by theme. Hover to pause · click to enlarge.":"Voos de drone, campanhas de Kernza, imagens de raízes e apresentações — organizados por tema. Passe o cursor para pausar · clique para ampliar.",
+        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.":"O CV, a carta de motivação e os certificados podem ser baixados livremente. 🔒 O histórico acadêmico é privado — solicite acesso por e-mail e eu o compartilharei diretamente.",
+        "UAV & Geospatial":"Drones e Geoespacial","Programming & Data Science":"Programação e Ciência de Dados","Sensing & Hardware":"Sensores e Hardware",
+        "Open to Opportunities":"Aberto a Oportunidades","MSc Positions":"Vagas de Mestrado","PhD Positions":"Vagas de Doutorado","Industry & Work":"Indústria e Trabalho",
+        "Seeking funded MSc opportunities in data-driven agricultural and food systems, remote sensing, or food quality & nutrition.":"Procuro oportunidades de mestrado financiadas em sistemas agrícolas e alimentares orientados por dados, sensoriamento remoto ou qualidade e nutrição de alimentos.",
+        "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Aberto a projetos de doutorado que unam aprendizado de máquina, sensoriamento remoto e sistemas de culturas/alimentos com impacto real.",
+        "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponível para funções em AgriTech, agricultura de precisão, drones/sensoriamento remoto e ciência de dados, além de colaborações de pesquisa.",
+        "Available":"Disponível","Open to opportunities — MSc · PhD · Industry / Work":"Aberto a oportunidades — Mestrado · Doutorado · Indústria / Trabalho",
+        "BSc Thesis · In Progress":"Tese de Bacharelado · Em andamento","Methodology":"Metodologia",
+        "UAV & Field Operations":"Drones e Operações de Campo","Root Imaging & Lab":"Imagens de Raízes e Laboratório","Presentations & Seminars":"Apresentações e Seminários","Topography & Survey Leadership · EARTH University":"Liderança em Topografia e Levantamentos · EARTH University",
+        "Academic Transcript":"Histórico Acadêmico","Enrollment Certification":"Certificado de Matrícula","A1/A3 Drone Pilot Licence":"Licença de Piloto de Drone A1/A3",
+        "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicite acesso por e-mail","EARTH University Registrar":"Secretaria da EARTH University","European certificate":"Certificado europeu","Fundamentals of Remote Sensing":"Fundamentos de Sensoriamento Remoto","Climate University certificate":"Certificado da Climate University",
+        "Certifications":"Certificações","Conferences":"Conferências","A1/A3 European Drone License":"Licença Europeia de Drone A1/A3","NASA ARSET — Fundamentals of Remote Sensing":"NASA ARSET — Fundamentos de Sensoriamento Remoto","Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3":"Erasmus Mundus + Intercâmbio Virtual CLUVEX Climate University 3","iClimate — Aarhus University Annual Conference":"iClimate — Conferência Anual da Universidade de Aarhus",
+        "Leadership & Volunteering":"Liderança e Voluntariado","Student Government Representative":"Representante do Governo Estudantil","Community Outreach Volunteer":"Voluntário de Extensão Comunitária","Volunteer":"Voluntário",
+        "English":"Inglês","Spanish":"Espanhol","Advanced":"Avançado","Native":"Nativo",
+        "Internship Supervisor · Aarhus 2025":"Supervisor de Estágio · Aarhus 2025","Thesis Assessor · Aarhus":"Avaliador de Tese · Aarhus","Day-to-Day Internship Supervisor":"Supervisora Diária de Estágio","Graduation Thesis Supervisor":"Orientador da Tese de Graduação",
+        "Associate Professor, Sustainable Perennial Cropping Systems":"Professor Associado, Sistemas Sustentáveis de Cultivos Perenes","PhD Researcher — Plant Phenotyping, Phenomic Prediction, Crop Physiology":"Pesquisador de Doutorado — Fenotipagem Vegetal, Predição Fenômica, Fisiologia de Culturas","PhD Researcher — Perennial Grains, Sustainable Agriculture, Plant Breeding":"Pesquisadora de Doutorado — Grãos Perenes, Agricultura Sustentável, Melhoramento Vegetal","Professor of Tropical Forestry · Director, Geomatics & Remote Sensing Center":"Professor de Engenharia Florestal Tropical · Diretor, Centro de Geomática e Sensoriamento Remoto",
+        "Supervised my 2025 research internship and hosted my Kernza dataset collection within his lab. Also an advisor and one of my three graduation-thesis assessors.":"Supervisionou meu estágio de pesquisa de 2025 e hospedou a coleta do meu conjunto de dados de Kernza em seu laboratório. Também é orientador e um dos meus três avaliadores da tese de graduação.",
+        "Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.":"Colaborador de pesquisa no projeto do grão perene Kernza em Aarhus e um dos meus três avaliadores da tese de graduação.",
+        "Supervised my day-to-day internship activities at Aarhus — overseeing field data collection and lab work on the Kernza perennial-grain trials.":"Supervisionou minhas atividades diárias de estágio em Aarhus — coordenando a coleta de dados de campo e o trabalho de laboratório nos ensaios do grão perene Kernza.",
+        "Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.":"Orientador da minha tese de graduação na EARTH University e um dos meus três avaliadores. Orienta meu trabalho em sensoriamento remoto e análise geoespacial.",
+        "Phone / WhatsApp":"Telefone / WhatsApp",
+        "Agricultural Sciences & Engineering · Precision & Digital Agriculture":"Ciências e Engenharia Agrícola · Agricultura de Precisão e Digital",
+        "Jump to a section or action…":"Ir para uma seção ou ação…"
+      },
+      html: {
+        heroDesc:"Profissional de Ciências Agrícolas especializado em <strong>agricultura de precisão e digital</strong>, sensoriamento remoto e análise geoespacial. Desenvolvo ferramentas orientadas por dados — de imagens de drones a modelos de aprendizado de máquina — para promover sistemas alimentares sustentáveis e a resiliência agrícola global.",
+        about1:"Sou um estudante do último ano de <strong>Ciências e Engenharia Agrícola</strong> na EARTH University, Costa Rica, altamente motivado e especializado em agricultura de precisão e digital, sensoriamento remoto e análise geoespacial.",
+        about2:"Tenho experiência em <strong>aquisição e processamento de dados com drones</strong> usando Pix4D, Agisoft Metashape, QGIS e Google Earth Engine, e domínio de <strong>Python e R</strong> para modelagem espacial, análise estatística e aprendizado de máquina. Meu trabalho concentra-se em desenvolver ferramentas orientadas por dados para estimativa de biomassa e gestão agrícola de precisão.",
+        about3:"Sou apaixonado por aplicar <strong>inteligência geoespacial e inovação AgriTech</strong> para promover sistemas alimentares sustentáveis e a resiliência agrícola global — unindo a agronomia de campo à ciência de dados moderna.",
+        sopLead:"Minha Carta de Motivação completa — abrangendo meus interesses de pesquisa em <strong>ciência de dados, sistemas agrícolas e qualidade dos alimentos</strong>, minha formação técnica e meus objetivos de longo prazo — está disponível em PDF."
+      }
+    }
+  };
+  const PLAIN_SEL = '.nav-links a, .hero-label, .stat-lbl, .hero-photo-meta span, .btn, .section-title, .section-sub, .tool-group-label, .opps-label, .opp-card h4, .opp-card p, .feature-badge, .pipeline-label, .gal-label, .doc-text strong, .doc-text span, .cred-text, .lead-item strong, .lead-item span, .lang-top span, .ref-badge, .ref-title, .ref-blurb, .cc-text span, footer span';
+  const TAIL_SEL = '.availability, .opp-tag';
+  const i18nOrig = new Map();
+  function rememberI18n() {
+    document.querySelectorAll(PLAIN_SEL).forEach(el => { if (!i18nOrig.has(el)) i18nOrig.set(el, { type:'text', en: el.textContent.trim().replace(/\s+/g,' ') }); });
+    document.querySelectorAll(TAIL_SEL).forEach(el => { if (!i18nOrig.has(el)) { const n = [...el.childNodes].reverse().find(x => x.nodeType===3 && x.textContent.trim()); i18nOrig.set(el, { type:'tail', node:n, en: n ? n.textContent.trim().replace(/\s+/g,' ') : '' }); } });
+    document.querySelectorAll('[data-i18n]').forEach(el => { if (!i18nOrig.has(el)) i18nOrig.set(el, { type:'html', key: el.getAttribute('data-i18n'), en: el.innerHTML }); });
+    const inp = document.getElementById('cmdkInput'); if (inp && !i18nOrig.has(inp)) i18nOrig.set(inp, { type:'ph', en: inp.placeholder });
+  }
+  function applyLang(lang) {
+    rememberI18n();
+    const d = I18N[lang];
+    i18nOrig.forEach((o, el) => {
+      if (!d) { // English baseline
+        if (o.type==='text') el.textContent = o.en;
+        else if (o.type==='tail') { if (o.node) o.node.textContent = ' ' + o.en; }
+        else if (o.type==='html') el.innerHTML = o.en;
+        else if (o.type==='ph') el.placeholder = o.en;
+        return;
+      }
+      if (o.type==='text') el.textContent = d.t[o.en] || o.en;
+      else if (o.type==='tail') { if (o.node) o.node.textContent = ' ' + (d.t[o.en] || o.en); }
+      else if (o.type==='html') el.innerHTML = (d.html && d.html[o.key]) || o.en;
+      else if (o.type==='ph') el.placeholder = d.t[o.en] || o.en;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('lang', lang);
+  }
+  const langSelect = document.getElementById('langSelect');
+  const savedLang = localStorage.getItem('lang') || 'en';
+  langSelect.value = savedLang;
+  applyLang(savedLang);
+  langSelect.addEventListener('change', () => applyLang(langSelect.value));
 </script>
 
 </body>
