@@ -157,6 +157,12 @@
     .gallery-tile:hover .gallery-cap{opacity:1;}
     .gal-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:2rem 0 0.9rem;}
     .gal-label:first-of-type{margin-top:0.5rem;}
+    /* horizontal slide gallery (auto-scroll, hover to pause) */
+    .gallery-slider{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x proximity;padding:0.2rem 0.2rem 0.9rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+    .gallery-slider::-webkit-scrollbar{height:6px;}
+    .gallery-slider::-webkit-scrollbar-track{background:transparent;}
+    .gallery-slider::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+    .gallery-slider .gallery-tile{flex:0 0 clamp(220px,30vw,280px);scroll-snap-align:start;}
 
     /* LIGHTBOX */
     .lb{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;flex-direction:column;padding:2rem;}
@@ -594,9 +600,9 @@
   <!-- § 06 GALLERY -->
   <section class="section reveal" id="gallery">
     <div class="section-header"><span class="section-num">§ 07</span><h2 class="section-title">Field &amp; Research Gallery</h2></div>
-    <p class="section-sub">Drone flights, Kernza field campaigns, root imaging, and research presentations. Click any image to enlarge.</p>
+    <p class="section-sub">Drone flights, Kernza campaigns, root imaging, and presentations — organized by theme. Hover to pause · click to enlarge.</p>
     <div class="gal-label">UAV &amp; Field Operations</div>
-    <div class="gallery-grid">
+    <div class="gallery-slider">
       <div class="gallery-tile lb-trigger" data-full="images/uav-drone-flight.jpeg" data-cap="UAV drone flight for multispectral data capture.">
         <img src="images/uav-drone-flight.jpeg" alt="UAV drone flight" loading="lazy" />
         <div class="gallery-cap">UAV drone flight — multispectral capture</div>
@@ -628,7 +634,7 @@
     </div>
 
     <div class="gal-label">Root Imaging &amp; Lab</div>
-    <div class="gallery-grid">
+    <div class="gallery-slider">
       <div class="gallery-tile lb-trigger" data-full="images/minirhizotron-demo.jpeg" data-cap="Demonstrating minirhizotron root imaging in the field.">
         <img src="images/minirhizotron-demo.jpeg" alt="Minirhizotron demonstration" loading="lazy" />
         <div class="gallery-cap">Demonstrating minirhizotron imaging</div>
@@ -644,7 +650,7 @@
     </div>
 
     <div class="gal-label">Presentations &amp; Seminars</div>
-    <div class="gallery-grid">
+    <div class="gallery-slider">
       <div class="gallery-tile lb-trigger" data-full="images/thesis-poster.png" data-cap="My Kernza biomass estimation thesis poster.">
         <img src="images/thesis-poster.png" alt="Thesis poster" loading="lazy" />
         <div class="gallery-cap">Thesis poster presentation</div>
@@ -672,7 +678,7 @@
     </div>
 
     <div class="gal-label">Topography &amp; Survey Leadership · EARTH University</div>
-    <div class="gallery-grid">
+    <div class="gallery-slider">
       <div class="gallery-tile lb-trigger" data-full="images/topo-01.jpeg" data-cap="GIS &amp; topography classroom session at EARTH University."><img src="images/topo-01.jpeg" alt="GIS and topography classroom session" loading="lazy" /><div class="gallery-cap">GIS &amp; topography classroom session</div></div>
       <div class="gallery-tile lb-trigger" data-full="images/topo-02.jpeg" data-cap="GIS lab session."><img src="images/topo-02.jpeg" alt="GIS lab session" loading="lazy" /><div class="gallery-cap">GIS lab session</div></div>
       <div class="gallery-tile lb-trigger" data-full="images/topo-03.jpeg" data-cap="Field data collection."><img src="images/topo-03.jpeg" alt="Field data collection" loading="lazy" /><div class="gallery-cap">Field data collection</div></div>
@@ -701,7 +707,7 @@
   <!-- § 07 DOCUMENTS -->
   <section class="section reveal" id="documents">
     <div class="section-header"><span class="section-num">§ 08</span><h2 class="section-title">Documents &amp; Downloads</h2></div>
-    <p class="section-sub">CV, cover letter, transcripts, and certificates — all available as PDFs. Click any to open.</p>
+    <p class="section-sub">CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.</p>
     <div class="docs-grid">
       <a class="doc-card" href="documents/CV.pdf" target="_blank">
         <span class="doc-icon">📄</span><span class="doc-text"><strong>Curriculum Vitae</strong><span>Full CV — PDF</span></span><span class="doc-arrow">↗</span>
@@ -709,11 +715,8 @@
       <a class="doc-card" href="documents/Statement-of-Purpose.pdf" target="_blank">
         <span class="doc-icon">📝</span><span class="doc-text"><strong>Statement of Purpose</strong><span>PDF</span></span><span class="doc-arrow">↗</span>
       </a>
-      <a class="doc-card" href="documents/Transcript-EARTH.pdf" target="_blank">
-        <span class="doc-icon">📊</span><span class="doc-text"><strong>Academic Transcript</strong><span>EARTH University</span></span><span class="doc-arrow">↗</span>
-      </a>
-      <a class="doc-card" href="documents/Transcript-Helsinki.pdf" target="_blank">
-        <span class="doc-icon">📈</span><span class="doc-text"><strong>Transcript</strong><span>University of Helsinki</span></span><span class="doc-arrow">↗</span>
+      <a class="doc-card" href="mailto:mmashen@earth.ac.cr?subject=Transcript%20access%20request&body=Hello%20Henry%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20your%20academic%20transcript.%0A%0AName%3A%0AOrganization%20%2F%20role%3A%0AReason%20for%20request%3A%0A%0AThank%20you.">
+        <span class="doc-icon">🔒</span><span class="doc-text"><strong>Academic Transcript</strong><span>Private — request access by email</span></span><span class="doc-arrow">✉</span>
       </a>
       <a class="doc-card" href="documents/Enrollment-Certification.pdf" target="_blank">
         <span class="doc-icon">🎓</span><span class="doc-text"><strong>Enrollment Certification</strong><span>EARTH University Registrar</span></span><span class="doc-arrow">↗</span>
@@ -797,7 +800,7 @@
       </div>
       <div class="ref-card">
         <div class="ref-head">
-          <div class="ref-avatar">AP</div>
+          <div class="ref-avatar"><img src="images/refs/alexa-peterson.jpg" alt="Alexa Nicole Peterson" /></div>
           <div class="ref-name">Alexa Nicole Peterson, MSc</div>
         </div>
         <div class="ref-role">PhD Researcher — Perennial Grains, Sustainable Agriculture, Plant Breeding<br><span class="ref-inst">Aarhus University, Denmark</span></div>
@@ -950,6 +953,20 @@
     });
   }, { threshold: 0.3 });
   document.querySelectorAll('.section').forEach(s => navObserver.observe(s));
+
+  // ── AUTO-SCROLLING SLIDE GALLERIES (hover to pause) ──
+  document.querySelectorAll('.gallery-slider').forEach(s => {
+    let paused = false;
+    s.addEventListener('mouseenter', () => paused = true);
+    s.addEventListener('mouseleave', () => paused = false);
+    s.addEventListener('touchstart', () => paused = true, { passive: true });
+    s.addEventListener('focusin', () => paused = true);
+    setInterval(() => {
+      if (paused || s.offsetParent === null) return;
+      if (s.scrollLeft + s.clientWidth >= s.scrollWidth - 1) s.scrollLeft = 0;
+      else s.scrollLeft += 1;
+    }, 25);
+  });
 
   // ── REVEAL ON SCROLL ──
   const revObserver = new IntersectionObserver(entries => {

@@ -11,6 +11,11 @@ documents/_archive/
 # Raw photo drop folder — only the curated clean copies are published
 images/Topography Leader-EARTH University/
 
+# Private documents — NEVER published (shared only on request)
+documents/_private/
+documents/Transcript-EARTH.pdf
+documents/Transcript-Helsinki.pdf
+
 # OS & editor junk
 .DS_Store
 Thumbs.db
