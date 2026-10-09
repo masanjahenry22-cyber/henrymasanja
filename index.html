@@ -71,7 +71,7 @@
     .sections{max-width:1180px;margin:0 auto;padding:0 2rem 5rem;}
     .section{border-top:1px solid var(--border);padding:3.8rem 0;scroll-margin-top:70px;}
     .section-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.4rem;}
-    .section-num{font-size:0.72rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;padding-top:0.15rem;white-space:nowrap;}
+    .section-num{display:none;}
     .section-title{font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;}
 
     /* availability badge */
@@ -295,13 +295,13 @@
   <div class="nav-inner">
     <div class="nav-brand">H. Masanja <span>/ Digital Agriculture</span></div>
     <ul class="nav-links">
-      <li><a href="#about">§ 01 About</a></li>
-      <li><a href="#statement">§ 02 Statement</a></li>
-      <li><a href="#experience">§ 04 Experience</a></li>
-      <li><a href="#thesis">§ 06 Thesis</a></li>
-      <li><a href="#gallery">§ 07 Gallery</a></li>
-      <li><a href="#documents">§ 08 Documents</a></li>
-      <li><a href="#contact">§ 12 Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#statement">Statement</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:0.5rem;">
       <select class="lang-select" id="langSelect" title="Language" aria-label="Language">
@@ -921,18 +921,18 @@
 
   // ── COMMAND PALETTE (⌘K) ──
   const cmdkItems = [
-    { ic:'👤', label:'About',                  sub:'§ 01', href:'#about' },
-    { ic:'📝', label:'Statement of Purpose',   sub:'§ 02', href:'#statement' },
-    { ic:'🧰', label:'Working Toolkit',        sub:'§ 03', href:'#toolkit' },
-    { ic:'💼', label:'Experience',             sub:'§ 04', href:'#experience' },
-    { ic:'🎓', label:'Education',              sub:'§ 05', href:'#education' },
-    { ic:'🌾', label:'Featured Research',      sub:'§ 06', href:'#thesis' },
-    { ic:'🖼️', label:'Gallery',               sub:'§ 07', href:'#gallery' },
-    { ic:'📄', label:'Documents',             sub:'§ 08', href:'#documents' },
-    { ic:'🏅', label:'Certifications',         sub:'§ 09', href:'#credentials' },
-    { ic:'⭐', label:'Leadership & Languages', sub:'§ 10', href:'#leadership' },
-    { ic:'👥', label:'References',             sub:'§ 11', href:'#references' },
-    { ic:'✉️', label:'Contact',               sub:'§ 12', href:'#contact' },
+    { ic:'👤', label:'About',                  sub:'01', href:'#about' },
+    { ic:'📝', label:'Statement of Purpose',   sub:'02', href:'#statement' },
+    { ic:'🧰', label:'Working Toolkit',        sub:'03', href:'#toolkit' },
+    { ic:'💼', label:'Experience',             sub:'04', href:'#experience' },
+    { ic:'🎓', label:'Education',              sub:'05', href:'#education' },
+    { ic:'🌾', label:'Featured Research',      sub:'06', href:'#thesis' },
+    { ic:'🖼️', label:'Gallery',               sub:'07', href:'#gallery' },
+    { ic:'📄', label:'Documents',             sub:'08', href:'#documents' },
+    { ic:'🏅', label:'Certifications',         sub:'09', href:'#credentials' },
+    { ic:'⭐', label:'Leadership & Languages', sub:'10', href:'#leadership' },
+    { ic:'👥', label:'References',             sub:'11', href:'#references' },
+    { ic:'✉️', label:'Contact',               sub:'12', href:'#contact' },
     { ic:'📥', label:'Download CV',            sub:'PDF',  href:'documents/CV.pdf', ext:true },
     { ic:'📝', label:'Statement of Purpose (PDF)', sub:'PDF', href:'documents/Statement-of-Purpose.pdf', ext:true },
     { ic:'✉️', label:'Email Henry',           sub:'mail', href:'mailto:mmashen@earth.ac.cr', ext:true },
@@ -1071,7 +1071,7 @@
   const I18N = {
     es: {
       t: {
-        "§ 01 About":"§ 01 Perfil","§ 02 Statement":"§ 02 Carta","§ 04 Experience":"§ 04 Experiencia","§ 06 Thesis":"§ 06 Tesis","§ 07 Gallery":"§ 07 Galería","§ 08 Documents":"§ 08 Documentos","§ 12 Contact":"§ 12 Contacto",
+        "Statement":"Carta","Experience":"Experiencia","Thesis":"Tesis","Gallery":"Galería","Documents":"Documentos",
         "Agricultural Sciences & Engineering · EARTH University":"Ciencias e Ingeniería Agrícola · EARTH University",
         "Cumulative GPA":"Promedio acumulado","Languages":"Idiomas","EU Drone License":"Licencia de dron UE","Countries worked":"Países de trabajo",
         "BSc Agricultural Sciences & Engineering":"Lic. en Ciencias e Ingeniería Agrícola",
@@ -1112,7 +1112,7 @@
     },
     fr: {
       t: {
-        "§ 01 About":"§ 01 Profil","§ 02 Statement":"§ 02 Lettre","§ 04 Experience":"§ 04 Expérience","§ 06 Thesis":"§ 06 Thèse","§ 07 Gallery":"§ 07 Galerie","§ 08 Documents":"§ 08 Documents","§ 12 Contact":"§ 12 Contact",
+        "Statement":"Lettre","Experience":"Expérience","Thesis":"Thèse","Gallery":"Galerie",
         "Agricultural Sciences & Engineering · EARTH University":"Sciences et Ingénierie Agricoles · EARTH University",
         "Cumulative GPA":"Moyenne générale","Languages":"Langues","EU Drone License":"Licence de drone UE","Countries worked":"Pays d'activité",
         "BSc Agricultural Sciences & Engineering":"Licence en Sciences et Ingénierie Agricoles",
@@ -1153,7 +1153,7 @@
     },
     pt: {
       t: {
-        "§ 01 About":"§ 01 Perfil","§ 02 Statement":"§ 02 Carta","§ 04 Experience":"§ 04 Experiência","§ 06 Thesis":"§ 06 Tese","§ 07 Gallery":"§ 07 Galeria","§ 08 Documents":"§ 08 Documentos","§ 12 Contact":"§ 12 Contato",
+        "Statement":"Carta","Experience":"Experiência","Thesis":"Tese","Gallery":"Galeria","Documents":"Documentos",
         "Agricultural Sciences & Engineering · EARTH University":"Ciências e Engenharia Agrícola · EARTH University",
         "Cumulative GPA":"Média acumulada","Languages":"Idiomas","EU Drone License":"Licença de drone UE","Countries worked":"Países onde atuei",
         "BSc Agricultural Sciences & Engineering":"Bacharel em Ciências e Engenharia Agrícola",
