@@ -256,6 +256,9 @@
 
     /* methodology pipeline */
     .pipeline-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin:1.4rem 0 0.9rem;}
+    .pub-note{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:0.9rem 1.1rem;}
+    .pub-note p{font-size:0.82rem;color:var(--text2);line-height:1.6;margin:0;}
+    .pub-note strong{color:var(--text);}
     .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0.6rem;}
     .pstep{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.9rem;position:relative;transition:all var(--tr);}
     .pstep:hover{border-color:var(--accent);}
@@ -432,6 +435,7 @@
       <div class="tools-grid">
         <div class="tool-chip"><img class="ti" src="images/emoji/rainbow.svg" alt=""> Multispectral</div>
         <div class="tool-chip"><img class="ti" src="images/emoji/camera.svg" alt=""> RGB Imaging</div>
+        <div class="tool-chip"><img class="ti" src="images/emoji/thermometer.svg" alt=""> Thermal Imaging</div>
         <div class="tool-chip"><img class="ti" src="images/emoji/ruler.svg" alt=""> LiDAR</div>
         <div class="tool-chip"><img class="ti" src="images/emoji/seedling.svg" alt=""> Minirhizotron Camera</div>
         <div class="tool-chip"><img class="ti" src="images/emoji/plug.svg" alt=""> Arduino</div>
@@ -461,15 +465,15 @@
       </div>
 
       <div class="tl-item">
-        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2025 — Now</div><div class="tl-line"></div></div>
+        <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2025 — 2026</div><div class="tl-line"></div></div>
         <div class="tl-body">
           <h3>Undergraduate Thesis — UAV-Based Biomass Estimation for Kernza</h3>
-          <div class="tl-meta"><span class="org">EARTH University</span><span class="status">● In Progress</span><span>Expected Nov 2026</span></div>
+          <div class="tl-meta"><span class="org">EARTH University × Aarhus University</span><span class="status">● Defended at Aarhus</span><span>EARTH defence pending · Grad. Dec 2026</span></div>
           <ul class="tl-list">
-            <li>Developing a UAV-based machine learning regression model to estimate aboveground biomass of Kernza using multispectral imagery and ground-truth data collected at Aarhus University, Denmark.</li>
-            <li>Generating orthomosaics and vegetation indices using Pix4D and QGIS.</li>
-            <li>Applying Python in Google Colab for data processing, feature engineering, and model training.</li>
-            <li>Preparing thesis manuscript documenting model development, validation, and biomass estimation results.</li>
+            <li>Built a UAV-based machine learning regression model to estimate plant-level aboveground biomass of Kernza (<em>Thinopyrum intermedium</em>) using multispectral imagery and ground-truth data collected at Aarhus University, Denmark.</li>
+            <li>Generated orthomosaics and vegetation indices using Pix4D and QGIS.</li>
+            <li>Applied Python in Google Colab for data processing, feature engineering, and model training.</li>
+            <li>Defended the thesis with the Aarhus University team in October 2026; EARTH University defence pending ahead of graduation on 4 December 2026.</li>
           </ul>
           <div class="tl-tags"><span class="tag">Thesis</span><span class="tag">Multispectral</span><span class="tag">Python</span><span class="tag">Kernza</span></div>
         </div>
@@ -478,10 +482,10 @@
       <div class="tl-item">
         <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-line"></div></div>
         <div class="tl-body">
-          <h3>Research Assistant Intern</h3>
+          <h3>Research Assistant Intern — Eusun Han's Lab</h3>
           <div class="tl-meta"><span class="org">Aarhus University, Denmark</span></div>
           <ul class="tl-list">
-            <li>Conducted drone flights (RGB, multispectral, LiDAR) and aided image processing using Pix4D and QGIS.</li>
+            <li>Conducted drone flights (RGB, multispectral, thermal, LiDAR) and aided image processing using Pix4D and QGIS.</li>
             <li>Conducted root imaging using multispectral and RGB minirhizotron cameras.</li>
             <li>Assisted with transplanting, weeding, harvesting, seed cleaning, root washing, and greenhouse, field, and laboratory work.</li>
           </ul>
@@ -588,12 +592,12 @@
     <div class="section-header"><span class="section-num">§ 06</span><h2 class="section-title">Featured Research</h2></div>
     <div class="feature">
       <div class="feature-content">
-        <span class="feature-badge">BSc Thesis · In Progress</span>
-        <h3>Estimating Aboveground Biomass of Kernza Using UAV Multispectral Imagery &amp; Machine Learning</h3>
-        <div class="f-meta">EARTH University × Aarhus University · Expected November 2026</div>
+        <span class="feature-badge">BSc Thesis · Defended at Aarhus</span>
+        <h3>Estimating Plant-Level Aboveground Biomass of Kernza (<em>Thinopyrum intermedium</em>) Using UAV Multispectral Imagery &amp; Machine Learning</h3>
+        <div class="f-meta">EARTH University × Aarhus University · Graduating December 2026</div>
         <p>I design and execute UAV data-collection campaigns, preprocess high-resolution multispectral and RGB imagery, perform image segmentation and feature extraction, and develop machine learning regression models validated against ground-truth field measurements collected in Denmark.</p>
         <p>The full pipeline runs in Python (Google Colab), with orthomosaics and vegetation indices generated in Pix4D and QGIS.</p>
-        <div class="f-meta" style="margin-top:0.25rem;"><span style="color:var(--accent);font-weight:600;">● In Progress</span> &nbsp;·&nbsp; 2025 – 2026 &nbsp;·&nbsp; EARTH University × Aarhus University</div>
+        <div class="f-meta" style="margin-top:0.25rem;"><span style="color:var(--accent);font-weight:600;">● Defended at Aarhus (EARTH defence pending)</span> &nbsp;·&nbsp; 2025 – 2026 &nbsp;·&nbsp; EARTH University × Aarhus University</div>
         <div class="feature-models">
           <span class="tag">Kernza</span><span class="tag">UAV Multispectral</span><span class="tag">Random Forest</span><span class="tag">Support Vector Machine</span>
           <span class="tag">XGBoost</span><span class="tag">Vegetation Indices</span><span class="tag">Feature Engineering</span>
@@ -612,8 +616,13 @@
       <div class="pstep"><div class="pnum">01</div><h5>Field Capture</h5><p>UAV multispectral &amp; RGB flights plus ground-truth biomass sampling (Aarhus, Denmark).</p></div>
       <div class="pstep"><div class="pnum">02</div><h5>Preprocessing</h5><p>Orthomosaics &amp; vegetation indices generated in Pix4D and QGIS.</p></div>
       <div class="pstep"><div class="pnum">03</div><h5>Feature Engineering</h5><p>Spectral and index features extracted and prepared in Python (Google Colab).</p></div>
-      <div class="pstep"><div class="pnum">04</div><h5>Model Training</h5><p>Regression models — Random Forest, SVM, and XGBoost — trained on the feature set.</p></div>
-      <div class="pstep"><div class="pnum">05</div><h5>Validation</h5><p>Predictions validated against ground-truth field measurements; biomass mapped.</p></div>
+      <div class="pstep"><div class="pnum">04</div><h5>Model Training</h5><p>Regression models — Random Forest, SVM, and XGBoost — trained on features from 708 retained plants.</p></div>
+      <div class="pstep"><div class="pnum">05</div><h5>Validation</h5><p>Support Vector Regression gave the best fit, validated against ground-truth field measurements.</p></div>
+    </div>
+
+    <div class="pipeline-label">Publication · Under Review</div>
+    <div class="pub-note">
+      <p>Ikeda, Y., <strong>Masanja, H. M.</strong>, Esterle, L., Nakajima, K., Munkholm, L. J., &amp; Han, E. &ldquo;Light fine-tuning drives foundation-model accuracy for individual-plant biomass estimation in intermediate wheatgrass (<em>Thinopyrum intermedium</em>, Kernza®).&rdquo; <em>Computers and Electronics in Agriculture</em> — under review (2026).</p>
     </div>
   </section>
 
@@ -760,6 +769,8 @@
       <div>
         <div class="tool-group-label">Certifications</div>
         <div class="cred-list">
+          <div class="cred-item"><span class="cred-year">2026</span><span class="cred-text">Geo University — Coordinate Reference Systems, Projections &amp; Spatial Data Representation</span></div>
+          <div class="cred-item"><span class="cred-year">2026</span><span class="cred-text">Geo University — Remote Sensing &amp; Satellite Image Processing (EOS Platform)</span></div>
           <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">A1/A3 European Drone License</span></div>
           <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">NASA ARSET — Fundamentals of Remote Sensing</span></div>
           <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3</span></div>
@@ -1074,7 +1085,7 @@
         "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Abierto a proyectos de doctorado que unan aprendizaje automático, teledetección y sistemas de cultivos/alimentos con impacto real.",
         "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponible para puestos en AgriTech, agricultura de precisión, drones/teledetección y ciencia de datos, además de colaboraciones de investigación.",
         "Available":"Disponible","Open to opportunities — MSc · PhD · Industry / Work":"Disponible para oportunidades — Maestría · Doctorado · Industria / Empleo",
-        "BSc Thesis · In Progress":"Tesis de Licenciatura · En curso","Methodology":"Metodología",
+        "BSc Thesis · Defended at Aarhus":"Tesis de Licenciatura · Defendida en Aarhus","Methodology":"Metodología",
         "UAV & Field Operations":"Drones y Operaciones de Campo","Root Imaging & Lab":"Imágenes de Raíces y Laboratorio","Presentations & Seminars":"Presentaciones y Seminarios","Topography & Survey Leadership · EARTH University":"Liderazgo en Topografía y Levantamientos · EARTH University",
         "Academic Transcript":"Expediente Académico","Enrollment Certification":"Certificado de Matrícula","A1/A3 Drone Pilot Licence":"Licencia de Piloto de Dron A1/A3",
         "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicita acceso por correo","EARTH University Registrar":"Registro de EARTH University","European certificate":"Certificado europeo","Fundamentals of Remote Sensing":"Fundamentos de Teledetección","Climate University certificate":"Certificado de Climate University",
@@ -1115,7 +1126,7 @@
         "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Ouvert à des projets de doctorat reliant apprentissage automatique, télédétection et systèmes de cultures/aliments à impact réel.",
         "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponible pour des postes en AgriTech, agriculture de précision, drones/télédétection et science des données, ainsi que des collaborations de recherche.",
         "Available":"Disponible","Open to opportunities — MSc · PhD · Industry / Work":"Ouvert aux opportunités — Master · Doctorat · Industrie / Emploi",
-        "BSc Thesis · In Progress":"Mémoire de Licence · En cours","Methodology":"Méthodologie",
+        "BSc Thesis · Defended at Aarhus":"Mémoire de Licence · Soutenu à Aarhus","Methodology":"Méthodologie",
         "UAV & Field Operations":"Drones et Opérations de Terrain","Root Imaging & Lab":"Imagerie Racinaire et Laboratoire","Presentations & Seminars":"Présentations et Séminaires","Topography & Survey Leadership · EARTH University":"Leadership en Topographie et Levés · EARTH University",
         "Academic Transcript":"Relevé de Notes","Enrollment Certification":"Certificat de Scolarité","A1/A3 Drone Pilot Licence":"Licence de Pilote de Drone A1/A3",
         "Full CV — PDF":"CV complet — PDF","Private — request access by email":"Privé — demande d'accès par e-mail","EARTH University Registrar":"Secrétariat d'EARTH University","European certificate":"Certificat européen","Fundamentals of Remote Sensing":"Fondamentaux de la Télédétection","Climate University certificate":"Certificat Climate University",
@@ -1156,7 +1167,7 @@
         "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Aberto a projetos de doutorado que unam aprendizado de máquina, sensoriamento remoto e sistemas de culturas/alimentos com impacto real.",
         "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponível para funções em AgriTech, agricultura de precisão, drones/sensoriamento remoto e ciência de dados, além de colaborações de pesquisa.",
         "Available":"Disponível","Open to opportunities — MSc · PhD · Industry / Work":"Aberto a oportunidades — Mestrado · Doutorado · Indústria / Trabalho",
-        "BSc Thesis · In Progress":"Tese de Bacharelado · Em andamento","Methodology":"Metodologia",
+        "BSc Thesis · Defended at Aarhus":"Tese de Bacharelado · Defendida em Aarhus","Methodology":"Metodologia",
         "UAV & Field Operations":"Drones e Operações de Campo","Root Imaging & Lab":"Imagens de Raízes e Laboratório","Presentations & Seminars":"Apresentações e Seminários","Topography & Survey Leadership · EARTH University":"Liderança em Topografia e Levantamentos · EARTH University",
         "Academic Transcript":"Histórico Acadêmico","Enrollment Certification":"Certificado de Matrícula","A1/A3 Drone Pilot Licence":"Licença de Piloto de Drone A1/A3",
         "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicite acesso por e-mail","EARTH University Registrar":"Secretaria da EARTH University","European certificate":"Certificado europeu","Fundamentals of Remote Sensing":"Fundamentos de Sensoriamento Remoto","Climate University certificate":"Certificado da Climate University",
