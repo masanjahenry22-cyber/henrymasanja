@@ -189,6 +189,33 @@
     .cred-item{display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);}
     .cred-year{font-size:0.7rem;font-weight:700;color:var(--accent);background:var(--accent-bg);padding:0.2rem 0.55rem;border-radius:5px;white-space:nowrap;flex-shrink:0;}
     .cred-text{font-size:0.86rem;color:var(--text);line-height:1.5;}
+    a.cred-item{color:inherit;transition:all var(--tr);}
+    a.cred-item:hover{border-color:var(--accent);background:var(--accent-bg);transform:translateY(-1px);}
+    .cred-arrow{margin-left:auto;color:var(--text3);font-size:0.85rem;padding-left:0.4rem;}
+
+    /* survey stat band (topography) */
+    .survey-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:0.6rem;margin:0.2rem 0 0.9rem;}
+    .sstat{background:var(--accent-bg);border:1px solid var(--border);border-radius:9px;padding:0.65rem 0.75rem;}
+    .sstat-num{display:block;font-size:1.25rem;font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:var(--accent);}
+    .sstat-lbl{display:block;font-size:0.66rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.2rem;}
+    .survey-note{font-size:0.82rem;color:var(--text2);line-height:1.6;max-width:820px;margin-bottom:1rem;}
+    .survey-note strong{color:var(--text);}
+    .lang-note{font-size:0.74rem;color:var(--text2);margin-top:0.4rem;}
+    .lang-note strong{color:var(--accent);}
+    .milestones{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+
+    /* thesis results */
+    .results-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:1.2rem;align-items:start;margin-bottom:1rem;}
+    @media (max-width:880px){.results-layout{grid-template-columns:1fr;}}
+    .results-table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;font-size:0.82rem;}
+    .results-table th,.results-table td{padding:0.55rem 0.8rem;text-align:left;border-bottom:1px solid var(--border);}
+    .results-table th{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);font-weight:700;background:var(--bg2);}
+    .results-table tr:last-child td{border-bottom:none;}
+    .results-table td.num{font-variant-numeric:tabular-nums;}
+    .results-table tr.best td{color:var(--accent);font-weight:700;background:var(--accent-bg);}
+    .results-caption{font-size:0.72rem;color:var(--text3);margin-top:0.45rem;}
+    .slides-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));}
+    .slides-grid .gallery-tile{aspect-ratio:16/9;background:#fff;}
 
     /* DOCUMENTS */
     .docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.9rem;}
@@ -213,7 +240,8 @@
     .lang-fill{height:100%;background:var(--accent);border-radius:4px;}
 
     /* REFERENCES */
-    .refs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+    .refs-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+    @media (max-width:1100px){.refs-grid{grid-template-columns:repeat(3,1fr);}}
     @media (max-width:900px){.refs-grid{grid-template-columns:1fr 1fr;}}
     @media (max-width:560px){.refs-grid{grid-template-columns:1fr;}}
     .ref-card{padding:1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all var(--tr);display:flex;flex-direction:column;}
@@ -370,6 +398,8 @@
         <div class="info-row"><span class="info-icon">🎓</span><div class="info-content"><strong>EARTH University</strong><span>BSc Agricultural Sciences · GPA 90/100</span></div></div>
         <div class="info-row"><span class="info-icon">📍</span><div class="info-content"><strong>Based across continents</strong><span>Costa Rica · Denmark · Uganda</span></div></div>
         <div class="info-row"><span class="info-icon">🛩️</span><div class="info-content"><strong>Licensed UAV Pilot</strong><span>A1/A3 European Drone License</span></div></div>
+        <div class="info-row"><span class="info-icon">📐</span><div class="info-content"><strong>Topography Scenario Lead</strong><span>1,115 RTK survey points · 20.33 ha mapped in one term</span></div></div>
+        <div class="info-row"><span class="info-icon">🗣️</span><div class="info-content"><strong>TOEFL iBT · CEFR B2</strong><span>4.5 / 6 (≈ 90 / 120) · October 2026</span></div></div>
         <div class="info-row"><span class="info-icon">🌍</span><div class="info-content"><strong>Focus</strong><span>Precision agriculture · Remote sensing · ML</span></div></div>
       </div>
     </div>
@@ -453,14 +483,22 @@
         <div class="tl-date-col"><div class="tl-dot"></div><div class="tl-year">2026 — Now</div><div class="tl-line"></div></div>
         <div class="tl-body">
           <h3>Drones &amp; Topography Scenario Lead</h3>
-          <div class="tl-meta"><span class="org">EARTH University, Costa Rica</span><span class="status">● Current</span></div>
+          <div class="tl-meta"><span class="org">EARTH University, Costa Rica</span><span class="status">● Current</span><span>Topography scenario · Work Experience course</span></div>
+          <div class="survey-stats" aria-label="Topography scenario results in one 15-week term">
+            <div class="sstat"><span class="sstat-num">1,115</span><span class="sstat-lbl">RTK survey points</span></div>
+            <div class="sstat"><span class="sstat-num">20.33 ha</span><span class="sstat-lbl">Area mapped</span></div>
+            <div class="sstat"><span class="sstat-num">10</span><span class="sstat-lbl">Production surveys</span></div>
+            <div class="sstat"><span class="sstat-num">9</span><span class="sstat-lbl">Distinct sites</span></div>
+            <div class="sstat"><span class="sstat-num">105</span><span class="sstat-lbl">Students guided</span></div>
+          </div>
           <ul class="tl-list">
-            <li>Lead UAV training and geospatial mapping initiatives.</li>
-            <li>Supervise drone data collection, orthomosaic generation, and vegetation index analysis.</li>
-            <li>Guide surveys and generate contour maps using RTK (SingularXYZ) and QGIS with plugins like HCMGIS, OSM Place Search, and OpenTopography DEM Downloader.</li>
-            <li>Coordinate weekly field operations and mentor first- and second-year student teams in applied precision agriculture.</li>
+            <li>Serve as a fourth-year student leader of the Topography scenario alongside Carly Chery, under the supervision of Prof. Ronald Fernández, guiding 105 first- and second-year students through field sessions every Wednesday and Saturday.</li>
+            <li>Run the complete surveying workflow: field data collection with RTK GNSS (SingularXYZ), coordinate transformation to CRTM05 (EPSG 5367), and contour and elevation mapping in QGIS (HCMGIS, OSM Place Search, OpenTopography DEM Downloader).</li>
+            <li>In a single 15-week term the teams completed 10 production surveys across 9 sites, collecting 1,115 survey points over 20.33 hectares.</li>
+            <li>Led a hands-on session on processing aerial drone imagery in Pix4Dmapper; supervise drone data collection, orthomosaic generation, and vegetation-index analysis.</li>
+            <li>Plan fieldwork around changing weather, troubleshoot equipment in real time, and break complex procedures into clear steps for younger students.</li>
           </ul>
-          <div class="tl-tags"><span class="tag">UAV</span><span class="tag">RTK</span><span class="tag">QGIS</span><span class="tag">Leadership</span></div>
+          <div class="tl-tags"><span class="tag">UAV</span><span class="tag">RTK GNSS</span><span class="tag">CRTM05</span><span class="tag">QGIS</span><span class="tag">Pix4Dmapper</span><span class="tag">Leadership</span></div>
         </div>
       </div>
 
@@ -474,6 +512,7 @@
             <li>Generated orthomosaics and vegetation indices using Pix4D and QGIS.</li>
             <li>Applied Python in Google Colab for data processing, feature engineering, and model training.</li>
             <li>Defended the thesis with the Aarhus University team in October 2026; EARTH University defence pending ahead of graduation on 4 December 2026.</li>
+            <li>Approval page of the final graduation project signed by my three advisors — Víctor Hugo Morales Peña, PhD (EARTH), Eusun Han, PhD and Yuma Ikeda, MSc (Aarhus) — in October 2026.</li>
           </ul>
           <div class="tl-tags"><span class="tag">Thesis</span><span class="tag">Multispectral</span><span class="tag">Python</span><span class="tag">Kernza</span></div>
         </div>
@@ -620,6 +659,62 @@
       <div class="pstep"><div class="pnum">05</div><h5>Validation</h5><p>Support Vector Regression gave the best fit, validated against ground-truth field measurements.</p></div>
     </div>
 
+    <div class="pipeline-label">Key Results</div>
+    <div class="survey-stats" aria-label="Key thesis results">
+      <div class="sstat"><span class="sstat-num">R² 0.525</span><span class="sstat-lbl">Best model · SVR (hold-out test)</span></div>
+      <div class="sstat"><span class="sstat-num">26.0 g</span><span class="sstat-lbl">RMSE per plant</span></div>
+      <div class="sstat"><span class="sstat-num">20.6 g</span><span class="sstat-lbl">MAE per plant</span></div>
+      <div class="sstat"><span class="sstat-num">708 / 840</span><span class="sstat-lbl">Plants modelled</span></div>
+      <div class="sstat"><span class="sstat-num">r = 0.51</span><span class="sstat-lbl">Max canopy height vs biomass</span></div>
+    </div>
+    <div class="results-layout">
+      <div>
+        <table class="results-table">
+          <thead><tr><th>Model</th><th>R²</th><th>RMSE (g/plant)</th><th>MAE (g/plant)</th></tr></thead>
+          <tbody>
+            <tr class="best"><td>Support Vector Regression</td><td class="num">0.525</td><td class="num">26.04</td><td class="num">20.64</td></tr>
+            <tr><td>Random Forest</td><td class="num">0.502</td><td class="num">26.67</td><td class="num">21.00</td></tr>
+            <tr><td>XGBoost</td><td class="num">0.479</td><td class="num">27.26</td><td class="num">21.80</td></tr>
+          </tbody>
+        </table>
+        <div class="results-caption">Hold-out test set: 30 % of plants (n = 213); models trained on 70 % (n = 495).</div>
+      </div>
+      <ul class="tl-list">
+        <li><strong>Canopy structure beats spectral indices:</strong> maximum canopy height (r = 0.51) and canopy volume (r = 0.47) were the strongest predictors; individual vegetation indices correlated only weakly (|r| ≤ 0.07).</li>
+        <li><strong>3-D information dominates:</strong> canopy structure and volume made up 74.7 % of Random Forest and 54.3 % of XGBoost feature importance, which SHAP analysis confirmed.</li>
+        <li><strong>Small plants are estimated well;</strong> the largest plants (above ~125 g) tend to be underestimated.</li>
+        <li><strong>SVR was the most stable model</strong> in 5-fold cross-validation (mean R² = 0.248 ± 0.090), so the workflow stands as a proof of concept for non-destructive, plant-level Kernza phenotyping.</li>
+      </ul>
+    </div>
+    <div class="gallery-grid slides-grid">
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-results-performance.jpeg" data-cap="Model performance on the 30 % test set: SVR achieved the best R² (0.525) and the lowest RMSE and MAE."><img src="images/thesis-results-performance.jpeg" alt="Bar charts of R², RMSE and MAE for SVR, Random Forest and XGBoost" loading="lazy" /><div class="gallery-cap">Model performance (R², RMSE, MAE)</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-results-estimated-vs-actual.jpeg" data-cap="Estimated vs actual biomass: good for smaller plants, with underestimation of the largest plants."><img src="images/thesis-results-estimated-vs-actual.jpeg" alt="Estimated versus actual biomass scatter plots for three models" loading="lazy" /><div class="gallery-cap">Estimated vs actual biomass</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-results-feature-importance.jpeg" data-cap="Feature importance: canopy height and volume ranked above every spectral index."><img src="images/thesis-results-feature-importance.jpeg" alt="Feature importance charts for Random Forest and XGBoost" loading="lazy" /><div class="gallery-cap">Feature importance</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-results-data-sources.jpeg" data-cap="Contribution by data source: canopy structure carried the largest share of each model's estimates."><img src="images/thesis-results-data-sources.jpeg" alt="Pie charts of data source contribution to biomass estimation" loading="lazy" /><div class="gallery-cap">Contribution by data source</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-results-correlation-shap.jpeg" data-cap="Correlation matrix and SHAP summary: higher canopy volume and height consistently pushed estimated biomass up."><img src="images/thesis-results-correlation-shap.jpeg" alt="Feature correlation matrix and SHAP summary plot" loading="lazy" /><div class="gallery-cap">Correlations &amp; SHAP</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/thesis-results-cross-validation.jpeg" data-cap="5-fold cross-validation and residuals: SVR was the most stable model; errors centred close to zero."><img src="images/thesis-results-cross-validation.jpeg" alt="Cross-validation box plots and residual distributions" loading="lazy" /><div class="gallery-cap">Cross-validation &amp; residuals</div></div>
+    </div>
+
+    <div class="pipeline-label">Graduation Project Milestones · October 2026</div>
+    <div class="gallery-grid milestones">
+      <div class="gallery-tile lb-trigger" data-full="images/grad-project-signed.jpeg" data-cap="Holding the signed approval page of my graduation project with my EARTH supervisor, Dr Víctor Hugo Morales Peña — October 2026.">
+        <img src="images/grad-project-signed.jpeg" alt="Henry holding the signed graduation project approval page with Dr Víctor Hugo Morales Peña" loading="lazy" style="object-position:center 32%;" />
+        <div class="gallery-cap">Graduation project signed ✍️</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/grad-project-title-page.jpeg" data-cap="Holding the title page of my final graduation project — EARTH University, 2026.">
+        <img src="images/grad-project-title-page.jpeg" alt="Henry holding the title page of his graduation project" loading="lazy" style="object-position:center 35%;" />
+        <div class="gallery-cap">Final graduation project</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/grad-project-signing.jpeg" data-cap="Dr Víctor Hugo Morales Peña signing the approval page of my graduation project at EARTH University.">
+        <img src="images/grad-project-signing.jpeg" alt="Dr Víctor Hugo Morales Peña signing the graduation project approval page" loading="lazy" />
+        <div class="gallery-cap">Supervisor signing the approval page</div>
+      </div>
+      <div class="gallery-tile lb-trigger" data-full="images/grad-project-defence.jpeg" data-cap="Online thesis defence with the Aarhus University team and my EARTH supervisor — 2 October 2026.">
+        <img src="images/grad-project-defence.jpeg" alt="Online thesis defence call with the Aarhus University team" loading="lazy" style="object-position:left center;" />
+        <div class="gallery-cap">Online defence with the Aarhus team</div>
+      </div>
+    </div>
+
     <div class="pipeline-label">Publication · Under Review</div>
     <div class="pub-note">
       <p>Ikeda, Y., <strong>Masanja, H. M.</strong>, Esterle, L., Nakajima, K., Munkholm, L. J., &amp; Han, E. &ldquo;Light fine-tuning drives foundation-model accuracy for individual-plant biomass estimation in intermediate wheatgrass (<em>Thinopyrum intermedium</em>, Kernza®).&rdquo; <em>Computers and Electronics in Agriculture</em> — under review (2026).</p>
@@ -692,6 +787,10 @@
         <img src="images/au-seminar-1.jpeg" alt="Climate and Water Seminar talk" loading="lazy" />
         <div class="gallery-cap">Climate &amp; Water Seminar talk</div>
       </div>
+      <div class="gallery-tile lb-trigger" data-full="images/iclimate-conference.jpeg" data-cap="Group photo at the iClimate annual conference, Aarhus University, Denmark.">
+        <img src="images/iclimate-conference.jpeg" alt="iClimate conference group photo at Aarhus University" loading="lazy" />
+        <div class="gallery-cap">iClimate conference, Aarhus University</div>
+      </div>
       <div class="gallery-tile lb-trigger" data-full="images/internship-presentation.jpeg" data-cap="Presenting my internship research.">
         <img src="images/internship-presentation.jpeg" alt="Internship presentation" loading="lazy" />
         <div class="gallery-cap">Presenting my internship research</div>
@@ -730,13 +829,33 @@
       <div class="gallery-tile lb-trigger" data-full="images/topo-20.jpeg" data-cap="Surveying the site."><img src="images/topo-20.jpeg" alt="Surveying the site" loading="lazy" /><div class="gallery-cap">Surveying the site</div></div>
       <div class="gallery-tile lb-trigger" data-full="images/topo-21.jpeg" data-cap="RTK measurements on site."><img src="images/topo-21.jpeg" alt="RTK measurements on site" loading="lazy" /><div class="gallery-cap">RTK measurements on site</div></div>
       <div class="gallery-tile lb-trigger" data-full="images/topo-22.jpeg" data-cap="Field survey team on site."><img src="images/topo-22.jpeg" alt="Field survey team on site" loading="lazy" /><div class="gallery-cap">Field survey team on site</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-23.jpeg" data-cap="Carrying the survey tripod across a river to reach a survey site."><img src="images/topo-23.jpeg" alt="Carrying a survey tripod across a river" loading="lazy" style="object-position:center 35%;" /><div class="gallery-cap">Crossing a river with the survey tripod</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-24.jpeg" data-cap="Survey team with the RTK rover and tripod after a field session."><img src="images/topo-24.jpeg" alt="Survey team with RTK rover and tripod" loading="lazy" style="object-position:center 60%;" /><div class="gallery-cap">Survey team with RTK rover and tripod</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-25.jpeg" data-cap="Heading out to the field with the topography student teams."><img src="images/topo-25.jpeg" alt="Heading out to the field with the student teams" loading="lazy" /><div class="gallery-cap">Heading out with the student teams</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-26.jpeg" data-cap="Field crew on the way to a survey site."><img src="images/topo-26.jpeg" alt="Field crew on the way to a survey site" loading="lazy" /><div class="gallery-cap">On the way to a survey site</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-27.jpeg" data-cap="Leading a hands-on geospatial processing session for the topography teams."><img src="images/topo-27.jpeg" alt="Leading a hands-on mapping session" loading="lazy" /><div class="gallery-cap">Leading a hands-on mapping session</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-28.jpeg" data-cap="Survey team with the RTK GNSS base and rover."><img src="images/topo-28.jpeg" alt="Survey team with RTK base and rover" loading="lazy" /><div class="gallery-cap">Team with the RTK base and rover</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-29.jpeg" data-cap="Topography team with RTK GNSS equipment before a survey."><img src="images/topo-29.jpeg" alt="Topography team with RTK GNSS equipment" loading="lazy" /><div class="gallery-cap">Topography team with RTK GNSS kits</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-30.jpeg" data-cap="With the survey team and RTK GNSS kits in the field."><img src="images/topo-30.jpeg" alt="Survey team with RTK GNSS kits" loading="lazy" /><div class="gallery-cap">With the survey team in the field</div></div>
+    </div>
+
+    <div class="gal-label">Topographic &amp; RTK Maps</div>
+    <p class="survey-note">One 15-week term of the Topography scenario: <strong>10 production surveys · 9 sites · 1,115 RTK survey points · 20.33 ha</strong>. Points are collected with RTK GNSS, transformed to CRTM05 (EPSG 5367), and turned into elevation, slope, and contour maps in QGIS and Python.</p>
+    <div class="gallery-slider">
+      <div class="gallery-tile lb-trigger" data-full="images/topo-map-rtk-points.jpeg" data-cap="RTK survey points (Pt1–C99) marking plants and plot boundaries across three crop blocks."><img src="images/topo-map-rtk-points.jpeg" alt="RTK survey points over three crop blocks" loading="lazy" /><div class="gallery-cap">RTK survey points across three crop blocks</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-map-rtk-elevation.jpeg" data-cap="Terrain elevation surface interpolated from RTK GNSS points, with contour lines."><img src="images/topo-map-rtk-elevation.jpeg" alt="Terrain elevation map from RTK points" loading="lazy" /><div class="gallery-cap">Terrain elevation from RTK points</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-map-rtk-slope.jpeg" data-cap="Slope (%) map derived from the same RTK survey."><img src="images/topo-map-rtk-slope.jpeg" alt="Slope map derived from RTK survey" loading="lazy" /><div class="gallery-cap">Slope map from the RTK survey</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-map-rtk-blocks.jpeg" data-cap="Crop blocks delineated on a drone orthomosaic using 99 RTK plant points (CRTM05)."><img src="images/topo-map-rtk-blocks.jpeg" alt="Crop blocks delineated on a drone orthomosaic" loading="lazy" /><div class="gallery-cap">Blocks delineated on a drone orthomosaic</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-map-contours.jpeg" data-cap="Contour map of a surveyed plot (team map)."><img src="images/topo-map-contours.jpeg" alt="Contour map of a surveyed plot" loading="lazy" /><div class="gallery-cap">Plot contour map</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-map-fertigation.jpeg" data-cap="Elevation and contour map of the fertigation plot."><img src="images/topo-map-fertigation.jpeg" alt="Elevation map of the fertigation plot" loading="lazy" /><div class="gallery-cap">Fertigation plot elevation map</div></div>
+      <div class="gallery-tile lb-trigger" data-full="images/topo-map-chirripo.jpeg" data-cap="Elevation and contour map of Cerro Chirripó, Costa Rica's highest peak, built from a DEM in QGIS."><img src="images/topo-map-chirripo.jpeg" alt="Elevation map of Cerro Chirripó" loading="lazy" /><div class="gallery-cap">Cerro Chirripó elevation map</div></div>
     </div>
   </section>
 
   <!-- § 07 DOCUMENTS -->
   <section class="section reveal" id="documents">
     <div class="section-header"><span class="section-num">§ 08</span><h2 class="section-title">Documents &amp; Downloads</h2></div>
-    <p class="section-sub">CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.</p>
+    <p class="section-sub">CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript and TOEFL score report are private — request access by email and I'll share them directly.</p>
     <div class="docs-grid">
       <a class="doc-card" href="documents/CV.pdf" target="_blank">
         <span class="doc-icon">📄</span><span class="doc-text"><strong>Curriculum Vitae</strong><span>Full CV — PDF</span></span><span class="doc-arrow">↗</span>
@@ -748,7 +867,7 @@
         <span class="doc-icon">🔒</span><span class="doc-text"><strong>Academic Transcript</strong><span>Private — request access by email</span></span><span class="doc-arrow">✉</span>
       </a>
       <a class="doc-card" href="documents/Enrollment-Certification.pdf" target="_blank">
-        <span class="doc-icon">🎓</span><span class="doc-text"><strong>Enrollment Certification</strong><span>EARTH University Registrar</span></span><span class="doc-arrow">↗</span>
+        <span class="doc-icon">🎓</span><span class="doc-text"><strong>Enrollment Certification</strong><span>EARTH University Registrar · October 2026</span></span><span class="doc-arrow">↗</span>
       </a>
       <a class="doc-card" href="documents/Drone-License.pdf" target="_blank">
         <span class="doc-icon">🛩️</span><span class="doc-text"><strong>A1/A3 Drone Pilot Licence</strong><span>European certificate</span></span><span class="doc-arrow">↗</span>
@@ -758,6 +877,15 @@
       </a>
       <a class="doc-card" href="documents/Erasmus-CLUVEX-Certificate.pdf" target="_blank">
         <span class="doc-icon">🏅</span><span class="doc-text"><strong>Erasmus+ CLUVEX</strong><span>Climate University certificate</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/GeoUniversity-CRS-Projections.pdf" target="_blank">
+        <span class="doc-icon">🧭</span><span class="doc-text"><strong>Geo University — CRS &amp; Projections</strong><span>Coordinate Reference Systems certificate</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="documents/GeoUniversity-EOS-Remote-Sensing.pdf" target="_blank">
+        <span class="doc-icon">🌐</span><span class="doc-text"><strong>Geo University — EOS Remote Sensing</strong><span>Satellite image processing certificate</span></span><span class="doc-arrow">↗</span>
+      </a>
+      <a class="doc-card" href="mailto:mmashen@earth.ac.cr?subject=TOEFL%20score%20report%20request&body=Hello%20Henry%2C%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20TOEFL%20iBT%20score%20report.%0A%0AName%3A%0AOrganization%20%2F%20role%3A%0AReason%20for%20request%3A%0A%0AThank%20you.">
+        <span class="doc-icon">🔒</span><span class="doc-text"><strong>TOEFL iBT Score Report</strong><span>4.5 / 6 · CEFR B2 — request by email</span></span><span class="doc-arrow">✉</span>
       </a>
     </div>
   </section>
@@ -769,8 +897,9 @@
       <div>
         <div class="tool-group-label">Certifications</div>
         <div class="cred-list">
-          <div class="cred-item"><span class="cred-year">2026</span><span class="cred-text">Geo University — Coordinate Reference Systems, Projections &amp; Spatial Data Representation</span></div>
-          <div class="cred-item"><span class="cred-year">2026</span><span class="cred-text">Geo University — Remote Sensing &amp; Satellite Image Processing (EOS Platform)</span></div>
+          <div class="cred-item"><span class="cred-year">2026</span><span class="cred-text">TOEFL iBT — 4.5 / 6 (≈ 90 / 120) · CEFR B2</span></div>
+          <a class="cred-item" href="documents/GeoUniversity-EOS-Remote-Sensing.pdf" target="_blank"><span class="cred-year">2026</span><span class="cred-text">Geo University — Remote Sensing &amp; Satellite Image Processing (EOS Platform)</span><span class="cred-arrow">↗</span></a>
+          <a class="cred-item" href="documents/GeoUniversity-CRS-Projections.pdf" target="_blank"><span class="cred-year">2026</span><span class="cred-text">Geo University — Coordinate Reference Systems, Projections &amp; Spatial Data Representation</span><span class="cred-arrow">↗</span></a>
           <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">A1/A3 European Drone License</span></div>
           <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">NASA ARSET — Fundamentals of Remote Sensing</span></div>
           <div class="cred-item"><span class="cred-year">2025</span><span class="cred-text">Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3</span></div>
@@ -800,7 +929,7 @@
       <div>
         <div class="tool-group-label">Languages</div>
         <div class="lang-list">
-          <div class="lang-row"><div class="lang-top"><span>English</span><span class="level">Advanced</span></div><div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div></div>
+          <div class="lang-row"><div class="lang-top"><span>English</span><span class="level">Advanced</span></div><div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div><div class="lang-note"><strong>TOEFL iBT</strong> (Oct 2026): 4.5 / 6 · ≈ 90 / 120 · CEFR B2</div></div>
           <div class="lang-row"><div class="lang-top"><span>Spanish</span><span class="level">Advanced</span></div><div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div></div>
           <div class="lang-row"><div class="lang-top"><span>Lusoga</span><span class="level">Native</span></div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
           <div class="lang-row"><div class="lang-top"><span>Luganda</span><span class="level">Native</span></div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
@@ -848,6 +977,15 @@
         <div class="ref-affil">EARTH University · Costa Rica</div>
         <div class="ref-blurb">Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.</div>
         <a class="ref-email" href="mailto:vmorales@earth.ac.cr">✉ vmorales@earth.ac.cr</a>
+      </div>
+      <div class="ref-card">
+        <span class="ref-badge">Topography Scenario Supervisor · EARTH 2026</span>
+        <div class="ref-photo"><img src="images/refs/ronald-fernandez.png" alt="Ronald Fernández" /></div>
+        <div class="ref-name">Ronald Fernández, MSc</div>
+        <div class="ref-title">Professor of Agricultural Engineering — Agricultural Mechanisation &amp; Climatology</div>
+        <div class="ref-affil">EARTH University · Costa Rica</div>
+        <div class="ref-blurb">Supervised my 2026 role as a fourth-year student leader of the Topography scenario, guiding 105 first- and second-year students in RTK GNSS surveying and QGIS mapping. Has known me since 2023.</div>
+        <a class="ref-email" href="mailto:rfernandez@earth.ac.cr">✉ rfernandez@earth.ac.cr</a>
       </div>
     </div>
   </section>
@@ -1078,17 +1216,19 @@
         "✉ Contact Me":"✉ Contáctame","📄 Statement of Purpose":"📄 Carta de Motivación","📄 All Documents":"📄 Todos los Documentos","📄 Read my Statement of Purpose (PDF)":"📄 Leer mi Carta de Motivación (PDF)","💻 Analysis code":"💻 Código de análisis",
         "About":"Perfil","Statement of Purpose":"Carta de Motivación","Working Toolkit":"Herramientas de Trabajo","Work & Research Experience":"Experiencia Laboral y de Investigación","Education":"Formación Académica","Featured Research":"Investigación Destacada","Field & Research Gallery":"Galería de Campo e Investigación","Documents & Downloads":"Documentos y Descargas","Certifications & Conferences":"Certificaciones y Congresos","Leadership & Languages":"Liderazgo e Idiomas","References":"Referencias","Contact":"Contacto",
         "Drone flights, Kernza campaigns, root imaging, and presentations — organized by theme. Hover to pause · click to enlarge.":"Vuelos con dron, campañas de Kernza, imágenes de raíces y presentaciones — organizadas por tema. Pasa el cursor para pausar · haz clic para ampliar.",
-        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.":"El CV, la carta de motivación y los certificados se pueden descargar libremente. 🔒 El expediente académico es privado — solicita acceso por correo y te lo compartiré directamente.",
+        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript and TOEFL score report are private — request access by email and I'll share them directly.":"El CV, la carta de motivación y los certificados se pueden descargar libremente. 🔒 El expediente académico y el informe de puntuación del TOEFL son privados — solicita acceso por correo y te los compartiré directamente.",
+        "Graduation Project Milestones · October 2026":"Hitos del Proyecto de Graduación · Octubre 2026","Topographic & RTK Maps":"Mapas Topográficos y RTK",
+        "Geo University — CRS & Projections":"Geo University — SRC y Proyecciones","Coordinate Reference Systems certificate":"Certificado de Sistemas de Referencia de Coordenadas","Geo University — EOS Remote Sensing":"Geo University — Teledetección con EOS","Satellite image processing certificate":"Certificado de procesamiento de imágenes satelitales","TOEFL iBT Score Report":"Informe de Puntuación TOEFL iBT","4.5 / 6 · CEFR B2 — request by email":"4.5 / 6 · MCER B2 — solicitar por correo",
         "UAV & Geospatial":"Drones y Geoespacial","Programming & Data Science":"Programación y Ciencia de Datos","Sensing & Hardware":"Sensores y Hardware",
         "Open to Opportunities":"Abierto a Oportunidades","MSc Positions":"Plazas de Maestría","PhD Positions":"Plazas de Doctorado","Industry & Work":"Industria y Empleo",
         "Seeking funded MSc opportunities in data-driven agricultural and food systems, remote sensing, or food quality & nutrition.":"Busco oportunidades de maestría financiadas en sistemas agrícolas y alimentarios basados en datos, teledetección o calidad y nutrición de los alimentos.",
         "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Abierto a proyectos de doctorado que unan aprendizaje automático, teledetección y sistemas de cultivos/alimentos con impacto real.",
         "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponible para puestos en AgriTech, agricultura de precisión, drones/teledetección y ciencia de datos, además de colaboraciones de investigación.",
         "Available":"Disponible","Open to opportunities — MSc · PhD · Industry / Work":"Disponible para oportunidades — Maestría · Doctorado · Industria / Empleo",
-        "BSc Thesis · Defended at Aarhus":"Tesis de Licenciatura · Defendida en Aarhus","Methodology":"Metodología",
+        "BSc Thesis · Defended at Aarhus":"Tesis de Licenciatura · Defendida en Aarhus","Methodology":"Metodología","Key Results":"Resultados Clave",
         "UAV & Field Operations":"Drones y Operaciones de Campo","Root Imaging & Lab":"Imágenes de Raíces y Laboratorio","Presentations & Seminars":"Presentaciones y Seminarios","Topography & Survey Leadership · EARTH University":"Liderazgo en Topografía y Levantamientos · EARTH University",
         "Academic Transcript":"Expediente Académico","Enrollment Certification":"Certificado de Matrícula","A1/A3 Drone Pilot Licence":"Licencia de Piloto de Dron A1/A3",
-        "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicita acceso por correo","EARTH University Registrar":"Registro de EARTH University","European certificate":"Certificado europeo","Fundamentals of Remote Sensing":"Fundamentos de Teledetección","Climate University certificate":"Certificado de Climate University",
+        "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicita acceso por correo","EARTH University Registrar · October 2026":"Registro de EARTH University · Octubre 2026","European certificate":"Certificado europeo","Fundamentals of Remote Sensing":"Fundamentos de Teledetección","Climate University certificate":"Certificado de Climate University",
         "Certifications":"Certificaciones","Conferences":"Congresos","A1/A3 European Drone License":"Licencia Europea de Dron A1/A3","NASA ARSET — Fundamentals of Remote Sensing":"NASA ARSET — Fundamentos de Teledetección","Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3":"Erasmus Mundus + Intercambio Virtual CLUVEX Climate University 3","iClimate — Aarhus University Annual Conference":"iClimate — Congreso Anual de la Universidad de Aarhus",
         "Leadership & Volunteering":"Liderazgo y Voluntariado","Student Government Representative":"Representante del Gobierno Estudiantil","Community Outreach Volunteer":"Voluntario de Extensión Comunitaria","Volunteer":"Voluntario",
         "English":"Inglés","Spanish":"Español","Advanced":"Avanzado","Native":"Nativo",
@@ -1098,6 +1238,8 @@
         "Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.":"Colaborador de investigación en el proyecto de grano perenne Kernza en Aarhus y uno de mis tres evaluadores de tesis de grado.",
         "Supervised my day-to-day internship activities at Aarhus — overseeing field data collection and lab work on the Kernza perennial-grain trials.":"Supervisó mis actividades diarias de pasantía en Aarhus — coordinando la recolección de datos de campo y el trabajo de laboratorio en los ensayos del grano perenne Kernza.",
         "Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.":"Director de mi tesis de grado en EARTH University y uno de mis tres evaluadores. Orienta mi trabajo en teledetección y análisis geoespacial.",
+        "Topography Scenario Supervisor · EARTH 2026":"Supervisor del Escenario de Topografía · EARTH 2026","Professor of Agricultural Engineering — Agricultural Mechanisation & Climatology":"Profesor de Ingeniería Agrícola — Mecanización Agrícola y Climatología",
+        "Supervised my 2026 role as a fourth-year student leader of the Topography scenario, guiding 105 first- and second-year students in RTK GNSS surveying and QGIS mapping. Has known me since 2023.":"Supervisó mi rol en 2026 como líder estudiantil de cuarto año del escenario de Topografía, guiando a 105 estudiantes de primer y segundo año en levantamientos con RTK GNSS y mapeo en QGIS. Me conoce desde 2023.",
         "Phone / WhatsApp":"Teléfono / WhatsApp",
         "Agricultural Sciences & Engineering · Precision & Digital Agriculture":"Ciencias e Ingeniería Agrícola · Agricultura de Precisión y Digital",
         "Jump to a section or action…":"Ir a una sección o acción…"
@@ -1119,17 +1261,19 @@
         "✉ Contact Me":"✉ Me contacter","📄 Statement of Purpose":"📄 Lettre de Motivation","📄 All Documents":"📄 Tous les Documents","📄 Read my Statement of Purpose (PDF)":"📄 Lire ma Lettre de Motivation (PDF)","💻 Analysis code":"💻 Code d'analyse",
         "About":"Profil","Statement of Purpose":"Lettre de Motivation","Working Toolkit":"Outils de Travail","Work & Research Experience":"Expérience Professionnelle et de Recherche","Education":"Formation","Featured Research":"Recherche en Vedette","Field & Research Gallery":"Galerie de Terrain et de Recherche","Documents & Downloads":"Documents et Téléchargements","Certifications & Conferences":"Certifications et Conférences","Leadership & Languages":"Leadership et Langues","References":"Références","Contact":"Contact",
         "Drone flights, Kernza campaigns, root imaging, and presentations — organized by theme. Hover to pause · click to enlarge.":"Vols de drone, campagnes Kernza, imagerie racinaire et présentations — organisés par thème. Survolez pour mettre en pause · cliquez pour agrandir.",
-        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.":"Le CV, la lettre de motivation et les certificats sont librement téléchargeables. 🔒 Le relevé de notes est privé — demandez l'accès par e-mail et je le partagerai directement.",
+        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript and TOEFL score report are private — request access by email and I'll share them directly.":"Le CV, la lettre de motivation et les certificats sont librement téléchargeables. 🔒 Le relevé de notes et le relevé de scores TOEFL sont privés — demandez l'accès par e-mail et je les partagerai directement.",
+        "Graduation Project Milestones · October 2026":"Étapes du Projet de Fin d'Études · Octobre 2026","Topographic & RTK Maps":"Cartes Topographiques et RTK",
+        "Geo University — CRS & Projections":"Geo University — SRC et Projections","Coordinate Reference Systems certificate":"Certificat Systèmes de Référence de Coordonnées","Geo University — EOS Remote Sensing":"Geo University — Télédétection avec EOS","Satellite image processing certificate":"Certificat de traitement d'images satellitaires","TOEFL iBT Score Report":"Relevé de Scores TOEFL iBT","4.5 / 6 · CEFR B2 — request by email":"4.5 / 6 · CECRL B2 — sur demande par e-mail",
         "UAV & Geospatial":"Drones et Géospatial","Programming & Data Science":"Programmation et Science des Données","Sensing & Hardware":"Capteurs et Matériel",
         "Open to Opportunities":"Ouvert aux Opportunités","MSc Positions":"Postes de Master","PhD Positions":"Postes de Doctorat","Industry & Work":"Industrie et Emploi",
         "Seeking funded MSc opportunities in data-driven agricultural and food systems, remote sensing, or food quality & nutrition.":"Je recherche des opportunités de master financées en systèmes agricoles et alimentaires axés sur les données, télédétection, ou qualité et nutrition des aliments.",
         "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Ouvert à des projets de doctorat reliant apprentissage automatique, télédétection et systèmes de cultures/aliments à impact réel.",
         "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponible pour des postes en AgriTech, agriculture de précision, drones/télédétection et science des données, ainsi que des collaborations de recherche.",
         "Available":"Disponible","Open to opportunities — MSc · PhD · Industry / Work":"Ouvert aux opportunités — Master · Doctorat · Industrie / Emploi",
-        "BSc Thesis · Defended at Aarhus":"Mémoire de Licence · Soutenu à Aarhus","Methodology":"Méthodologie",
+        "BSc Thesis · Defended at Aarhus":"Mémoire de Licence · Soutenu à Aarhus","Methodology":"Méthodologie","Key Results":"Résultats Clés",
         "UAV & Field Operations":"Drones et Opérations de Terrain","Root Imaging & Lab":"Imagerie Racinaire et Laboratoire","Presentations & Seminars":"Présentations et Séminaires","Topography & Survey Leadership · EARTH University":"Leadership en Topographie et Levés · EARTH University",
         "Academic Transcript":"Relevé de Notes","Enrollment Certification":"Certificat de Scolarité","A1/A3 Drone Pilot Licence":"Licence de Pilote de Drone A1/A3",
-        "Full CV — PDF":"CV complet — PDF","Private — request access by email":"Privé — demande d'accès par e-mail","EARTH University Registrar":"Secrétariat d'EARTH University","European certificate":"Certificat européen","Fundamentals of Remote Sensing":"Fondamentaux de la Télédétection","Climate University certificate":"Certificat Climate University",
+        "Full CV — PDF":"CV complet — PDF","Private — request access by email":"Privé — demande d'accès par e-mail","EARTH University Registrar · October 2026":"Secrétariat d'EARTH University · Octobre 2026","European certificate":"Certificat européen","Fundamentals of Remote Sensing":"Fondamentaux de la Télédétection","Climate University certificate":"Certificat Climate University",
         "Certifications":"Certifications","Conferences":"Conférences","A1/A3 European Drone License":"Licence Européenne de Drone A1/A3","NASA ARSET — Fundamentals of Remote Sensing":"NASA ARSET — Fondamentaux de la Télédétection","Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3":"Erasmus Mundus + Échange Virtuel CLUVEX Climate University 3","iClimate — Aarhus University Annual Conference":"iClimate — Conférence Annuelle de l'Université d'Aarhus",
         "Leadership & Volunteering":"Leadership et Bénévolat","Student Government Representative":"Représentant du Gouvernement Étudiant","Community Outreach Volunteer":"Bénévole d'Action Communautaire","Volunteer":"Bénévole",
         "English":"Anglais","Spanish":"Espagnol","Advanced":"Avancé","Native":"Natif",
@@ -1139,6 +1283,8 @@
         "Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.":"Collaborateur de recherche sur le projet de céréale pérenne Kernza à Aarhus et l'un de mes trois évaluateurs de mémoire.",
         "Supervised my day-to-day internship activities at Aarhus — overseeing field data collection and lab work on the Kernza perennial-grain trials.":"A supervisé mes activités quotidiennes de stage à Aarhus — coordonnant la collecte de données de terrain et le travail de laboratoire sur les essais de la céréale pérenne Kernza.",
         "Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.":"Directeur de mon mémoire de fin d'études à EARTH University et l'un de mes trois évaluateurs. Encadre mon travail en télédétection et analyse géospatiale.",
+        "Topography Scenario Supervisor · EARTH 2026":"Superviseur du Scénario de Topographie · EARTH 2026","Professor of Agricultural Engineering — Agricultural Mechanisation & Climatology":"Professeur de Génie Agricole — Mécanisation Agricole et Climatologie",
+        "Supervised my 2026 role as a fourth-year student leader of the Topography scenario, guiding 105 first- and second-year students in RTK GNSS surveying and QGIS mapping. Has known me since 2023.":"A supervisé mon rôle en 2026 de leader étudiant de quatrième année du scénario de Topographie, encadrant 105 étudiants de première et deuxième année en levés RTK GNSS et cartographie QGIS. Me connaît depuis 2023.",
         "Phone / WhatsApp":"Téléphone / WhatsApp",
         "Agricultural Sciences & Engineering · Precision & Digital Agriculture":"Sciences et Ingénierie Agricoles · Agriculture de Précision et Numérique",
         "Jump to a section or action…":"Aller à une section ou une action…"
@@ -1160,17 +1306,19 @@
         "✉ Contact Me":"✉ Fale Comigo","📄 Statement of Purpose":"📄 Carta de Motivação","📄 All Documents":"📄 Todos os Documentos","📄 Read my Statement of Purpose (PDF)":"📄 Ler minha Carta de Motivação (PDF)","💻 Analysis code":"💻 Código de análise",
         "About":"Perfil","Statement of Purpose":"Carta de Motivação","Working Toolkit":"Ferramentas de Trabalho","Work & Research Experience":"Experiência Profissional e de Pesquisa","Education":"Formação Acadêmica","Featured Research":"Pesquisa em Destaque","Field & Research Gallery":"Galeria de Campo e Pesquisa","Documents & Downloads":"Documentos e Downloads","Certifications & Conferences":"Certificações e Conferências","Leadership & Languages":"Liderança e Idiomas","References":"Referências","Contact":"Contato",
         "Drone flights, Kernza campaigns, root imaging, and presentations — organized by theme. Hover to pause · click to enlarge.":"Voos de drone, campanhas de Kernza, imagens de raízes e apresentações — organizados por tema. Passe o cursor para pausar · clique para ampliar.",
-        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript is private — request access by email and I'll share it directly.":"O CV, a carta de motivação e os certificados podem ser baixados livremente. 🔒 O histórico acadêmico é privado — solicite acesso por e-mail e eu o compartilharei diretamente.",
+        "CV, statement of purpose, and certificates are free to download. 🔒 The academic transcript and TOEFL score report are private — request access by email and I'll share them directly.":"O CV, a carta de motivação e os certificados podem ser baixados livremente. 🔒 O histórico acadêmico e o relatório de notas do TOEFL são privados — solicite acesso por e-mail e eu os compartilharei diretamente.",
+        "Graduation Project Milestones · October 2026":"Marcos do Projeto de Graduação · Outubro 2026","Topographic & RTK Maps":"Mapas Topográficos e RTK",
+        "Geo University — CRS & Projections":"Geo University — SRC e Projeções","Coordinate Reference Systems certificate":"Certificado de Sistemas de Referência de Coordenadas","Geo University — EOS Remote Sensing":"Geo University — Sensoriamento Remoto com EOS","Satellite image processing certificate":"Certificado de processamento de imagens de satélite","TOEFL iBT Score Report":"Relatório de Notas TOEFL iBT","4.5 / 6 · CEFR B2 — request by email":"4.5 / 6 · QECR B2 — solicitar por e-mail",
         "UAV & Geospatial":"Drones e Geoespacial","Programming & Data Science":"Programação e Ciência de Dados","Sensing & Hardware":"Sensores e Hardware",
         "Open to Opportunities":"Aberto a Oportunidades","MSc Positions":"Vagas de Mestrado","PhD Positions":"Vagas de Doutorado","Industry & Work":"Indústria e Trabalho",
         "Seeking funded MSc opportunities in data-driven agricultural and food systems, remote sensing, or food quality & nutrition.":"Procuro oportunidades de mestrado financiadas em sistemas agrícolas e alimentares orientados por dados, sensoriamento remoto ou qualidade e nutrição de alimentos.",
         "Open to PhD projects bridging machine learning, remote sensing, and crop/food systems for real-world impact.":"Aberto a projetos de doutorado que unam aprendizado de máquina, sensoriamento remoto e sistemas de culturas/alimentos com impacto real.",
         "Available for AgriTech, precision-agriculture, UAV/remote-sensing, and data-science roles, plus research collaborations.":"Disponível para funções em AgriTech, agricultura de precisão, drones/sensoriamento remoto e ciência de dados, além de colaborações de pesquisa.",
         "Available":"Disponível","Open to opportunities — MSc · PhD · Industry / Work":"Aberto a oportunidades — Mestrado · Doutorado · Indústria / Trabalho",
-        "BSc Thesis · Defended at Aarhus":"Tese de Bacharelado · Defendida em Aarhus","Methodology":"Metodologia",
+        "BSc Thesis · Defended at Aarhus":"Tese de Bacharelado · Defendida em Aarhus","Methodology":"Metodologia","Key Results":"Resultados Principais",
         "UAV & Field Operations":"Drones e Operações de Campo","Root Imaging & Lab":"Imagens de Raízes e Laboratório","Presentations & Seminars":"Apresentações e Seminários","Topography & Survey Leadership · EARTH University":"Liderança em Topografia e Levantamentos · EARTH University",
         "Academic Transcript":"Histórico Acadêmico","Enrollment Certification":"Certificado de Matrícula","A1/A3 Drone Pilot Licence":"Licença de Piloto de Drone A1/A3",
-        "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicite acesso por e-mail","EARTH University Registrar":"Secretaria da EARTH University","European certificate":"Certificado europeu","Fundamentals of Remote Sensing":"Fundamentos de Sensoriamento Remoto","Climate University certificate":"Certificado da Climate University",
+        "Full CV — PDF":"CV completo — PDF","Private — request access by email":"Privado — solicite acesso por e-mail","EARTH University Registrar · October 2026":"Secretaria da EARTH University · Outubro 2026","European certificate":"Certificado europeu","Fundamentals of Remote Sensing":"Fundamentos de Sensoriamento Remoto","Climate University certificate":"Certificado da Climate University",
         "Certifications":"Certificações","Conferences":"Conferências","A1/A3 European Drone License":"Licença Europeia de Drone A1/A3","NASA ARSET — Fundamentals of Remote Sensing":"NASA ARSET — Fundamentos de Sensoriamento Remoto","Erasmus Mundus + CLUVEX Climate University Virtual Exchange 3":"Erasmus Mundus + Intercâmbio Virtual CLUVEX Climate University 3","iClimate — Aarhus University Annual Conference":"iClimate — Conferência Anual da Universidade de Aarhus",
         "Leadership & Volunteering":"Liderança e Voluntariado","Student Government Representative":"Representante do Governo Estudantil","Community Outreach Volunteer":"Voluntário de Extensão Comunitária","Volunteer":"Voluntário",
         "English":"Inglês","Spanish":"Espanhol","Advanced":"Avançado","Native":"Nativo",
@@ -1180,6 +1328,8 @@
         "Research collaborator on the Kernza perennial-grain project at Aarhus and one of my three graduation-thesis assessors.":"Colaborador de pesquisa no projeto do grão perene Kernza em Aarhus e um dos meus três avaliadores da tese de graduação.",
         "Supervised my day-to-day internship activities at Aarhus — overseeing field data collection and lab work on the Kernza perennial-grain trials.":"Supervisionou minhas atividades diárias de estágio em Aarhus — coordenando a coleta de dados de campo e o trabalho de laboratório nos ensaios do grão perene Kernza.",
         "Supervisor of my graduation thesis at EARTH University and one of my three thesis assessors. Mentors my work in remote sensing and geospatial analysis.":"Orientador da minha tese de graduação na EARTH University e um dos meus três avaliadores. Orienta meu trabalho em sensoriamento remoto e análise geoespacial.",
+        "Topography Scenario Supervisor · EARTH 2026":"Supervisor do Cenário de Topografia · EARTH 2026","Professor of Agricultural Engineering — Agricultural Mechanisation & Climatology":"Professor de Engenharia Agrícola — Mecanização Agrícola e Climatologia",
+        "Supervised my 2026 role as a fourth-year student leader of the Topography scenario, guiding 105 first- and second-year students in RTK GNSS surveying and QGIS mapping. Has known me since 2023.":"Supervisionou meu papel em 2026 como líder estudantil do quarto ano do cenário de Topografia, orientando 105 estudantes do primeiro e segundo anos em levantamentos com RTK GNSS e mapeamento no QGIS. Conhece-me desde 2023.",
         "Phone / WhatsApp":"Telefone / WhatsApp",
         "Agricultural Sciences & Engineering · Precision & Digital Agriculture":"Ciências e Engenharia Agrícola · Agricultura de Precisão e Digital",
         "Jump to a section or action…":"Ir para uma seção ou ação…"
